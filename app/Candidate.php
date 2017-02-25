@@ -12,9 +12,9 @@ class Candidate extends Model
             'name_vice'];
 
     public function visions(){
-        $this->hasMany('App\Vision');
+      return  $this->hasMany('App\Vision');
     }
     public function missions(){
-        $this->hasMany('App\Missions');
+      return  $this->hasMany('App\Mission');
     }
 }

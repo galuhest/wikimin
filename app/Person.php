@@ -11,15 +11,15 @@ class Person extends Model
     protected $fillable = ['name'];
 
     public function careers(){
-        $this->hasMany('App\Career');
+      return  $this->hasMany('App\Career');
     }
     public function educations(){
-        $this->hasMany('App\Education');
+      return  $this->hasMany('App\Education');
     }
     public function tesimonies(){
-        $this->hasMany('App\Testimony');
+      return  $this->hasMany('App\Testimony');
     }
     public function controversies(){
-        $this->hasMany('App\Controversy');
+      return  $this->hasMany('App\Controversy');
     }
 }

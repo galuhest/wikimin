@@ -18,58 +18,58 @@
     </div>
     <div class="row">
       <h3>Visi</h3>
-      <a class="btn" href="{{url('/visi/$candidate->id/create')}}">Tambah</a>
-      <a class="btn" href="{{url('visi/$candidate->id/edit')}}">Edit</a>
-      <a class="btn" href="{{url('visi/$candidate->id/')}}">Lihat</a>
+      <a class="btn" href='{{url("/vision/$candidate->id/create")}}'>Tambah</a>
+      <a class="btn" href='{{url("vision/$candidate->id/edit")}}'>Edit</a>
+      <a class="btn" href='{{url("vision/$candidate->id/")}}'>Lihat</a>
     </div>
     <div class="row">
       <h3>Program</h3>
-      <a class="btn" href="{{url('program/$candidate->id/create')}}">Tambah</a>
-      <a class="btn" href="{{url('program/$candidate->id/edit')}}">Edit</a>
-      <a class="btn" href="{{url('program/$candidate->id/')}}">Lihat</a>
+      <a class="btn" href='{{url("program/$candidate->id/create")}}'>Tambah</a>
+      <a class="btn" href='{{url("program/$candidate->id/edit")}}'>Edit</a>
+      <a class="btn" href='{{url("program/$candidate->id/")}}'>Lihat</a>
     </div>
     <div class="row">
       <h3>Pendidikan</h3>
       <div class="col-md-6">
-        <a class="btn" href="{{url('education/$candidate->head_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('education/$candidate->head_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("education/$candidate->head_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("education/$candidate->head_id/")}}'>Lihat</a>
       </div>
       <div class="col-md-6">
-        <a class="btn" href="{{url('education/$candidate->vice_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('education/$candidate->vice_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("education/$candidate->vice_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("education/$candidate->vice_id/")}}'>Lihat</a>
       </div>
     </div>
     <div class="row">
       <h3>Karir</h3>
       <div class="col-md-6">
-        <a class="btn" href="{{url('career/$candidate->head_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('career/$candidate->head_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("career/$candidate->head_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("career/$candidate->head_id/")}}'>Lihat</a>
       </div>
       <div class="col-md-6">
-        <a class="btn" href="{{url('career/$candidate->vice_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('career/$candidate->vice_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("career/$candidate->vice_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("career/$candidate->vice_id/")}}'>Lihat</a>
       </div>
     </div>
     <div class="row">
       <h3>Testimoni</h3>
       <div class="col-md-6">
-        <a class="btn" href="{{url('testimony/$candidate->head_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('testimony/$candidate->head_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("testimony/$candidate->head_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("testimony/$candidate->head_id/")}}'>Lihat</a>
       </div>
       <div class="col-md-6">
-        <a class="btn" href="{{url('testomony/$candidate->vice_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('testimony/$candidate->vice_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("testomony/$candidate->vice_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("testimony/$candidate->vice_id/")}}'>Lihat</a>
       </div>
     </div>
     <div class="row">
       <h3>Kontroversi</h3>
       <div class="col-md-6">
-        <a class="btn" href="{{url('controversy/$candidate->head_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('controversy/$candidate->head_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("controversy/$candidate->head_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("controversy/$candidate->head_id/")}}'>Lihat</a>
       </div>
       <div class="col-md-6">
-        <a class="btn" href="{{url('controversy/$candidate->vice_id/create')}}">Tambah</a>
-        <a class="btn" href="{{url('controversy/$candidate->vice_id/')}}">Lihat</a>
+        <a class="btn" href='{{url("controversy/$candidate->vice_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("controversy/$candidate->vice_id/")}}'>Lihat</a>
       </div>
     </div>
   </div>

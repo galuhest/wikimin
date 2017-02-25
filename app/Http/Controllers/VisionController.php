@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 use App\Vision;
@@ -11,16 +12,28 @@ class VisionController extends Controller
 {
     //
     public function index($id) {
-      $vision = Candidate::find($id)->visions();
-      return view('vision.index',compact('vision'));
+      $visions = Candidate::find($id)->visions;
+      return view('vision.index',compact('visions'));
     }
 
-    public function $create($id)  {
+    public function create($id)  {
       return view('vision.create',compact('id'));
     }
 
     public function store(Request $request)  {
+      $id = Input::get('id');
+      $visions = Input::get('visi');
+      $sources = Input::get('source');
 
+      for($i = 0; $i < count($visions); $i++)  {
+        $visi = new Vision();
+        $visi->candidate_id = $id;
+        $visi->value = $visions[$i];
+        $visi->source = $sources[$i];
+        $visi->save();
+      }
+
+      return redirect("/vision/$id");
     }
 
     public function edit($id)  {
