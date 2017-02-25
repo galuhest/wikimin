@@ -22,8 +22,8 @@ class CreateControversiesTables extends Migration
               ->on('topics')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->string('source');
             $table->string('value');
+            $table->string('source');
             $table->timestamps();
         });
     }

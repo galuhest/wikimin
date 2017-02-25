@@ -9,5 +9,6 @@ class Mission extends Model
     //
     protected $table = 'missions';
     protected $fillable = ['candidate_id',
-            'value'];
+            'value',
+            'source'];
 }

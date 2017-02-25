@@ -9,5 +9,6 @@ class Vision extends Model
     //
     protected $table = 'visions';
     protected $fillable = ['candidate_id',
-            'value'];
+            'value',
+            'source'];
 }

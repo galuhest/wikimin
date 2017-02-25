@@ -23,6 +23,7 @@ class CreateVisionsTable extends Migration
               ->onUpdate('cascade')
               ->onDelete('cascade');
             $table->string('value',500);
+            $table->string('source');
             $table->timestamps();
         });
     }

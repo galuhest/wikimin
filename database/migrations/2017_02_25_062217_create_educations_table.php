@@ -26,6 +26,7 @@ class CreateEducationsTable extends Migration
             $table->integer('year_end')->nullable();
             $table->string('institution',255);
             $table->string('degree')->nullable();
+            $table->string('source');
             $table->timestamps();
         });
     }

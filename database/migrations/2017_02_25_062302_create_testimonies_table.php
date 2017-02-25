@@ -25,6 +25,7 @@ class CreateTestimoniesTable extends Migration
             $table->integer('year_given');
             $table->string('voucher',255);
             $table->string('testimony');
+            $table->string('source');
             $table->timestamps();
         });
     }

@@ -12,5 +12,6 @@ class Career extends Model
       'year_start',
       'year_end',
       'institution',
-      'position'];
+      'position',
+      'source'];
 }

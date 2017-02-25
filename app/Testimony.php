@@ -11,5 +11,6 @@ class Testimony extends Model
     protected $fillable = ['candidate_id',
             'year_given',
             'voucher',
-            'testimony'];
+            'testimony',
+            'source'];
 }

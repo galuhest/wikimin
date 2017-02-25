@@ -12,5 +12,6 @@ class Education extends Model
         'year_start',
         'year_end',
         'institution',
-        'degree'];
+        'degree',
+        'source'];
 }
