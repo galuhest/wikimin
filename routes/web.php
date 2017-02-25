@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 Route::resource('candidate',"CandidateController");
+
+Route::group(['prefix'=>'vision'], function() {
+  Route::get('/{id}', 'VisionController@index');
+  Route::get('/{id}/create', 'VisionController@create');
+  Route::post('/', 'VisionController@store');
+  Route::get('/{id}/edit', 'VisionController@edit');
+  Route::put('/{id}', 'VisionController@update');
+  Route::delete('/{id}', 'VisionController@delete');
+});
