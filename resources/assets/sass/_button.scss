@@ -1,0 +1,35 @@
+.btn {
+	border: none;
+	padding: 15px 20px;
+	border-radius: 4px;
+	display: inline-block;
+	margin-top: 15px;
+	cursor: pointer;
+}
+
+.btn-primary {
+	@extend .btn;
+	border:1px solid #e85454;
+	color: #e85454;
+	background-color: transparent;
+	line-height: 1.2em;
+	&:hover {
+		border: 1px solid #e85454;
+		background: #e85454;
+		color: white;
+	}
+	&:active {
+		border: 1px solid #e85454;
+		background: #e85454;
+		color: white;
+	}
+}
+
+.btn-big {
+	padding: 25px 30px;
+	font-size: 1.2em;
+}
+.btn-small {
+	padding: 5px 8px;
+	font-size: 13px;
+}

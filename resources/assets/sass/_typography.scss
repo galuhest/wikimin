@@ -1,0 +1,23 @@
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Merriweather", Georgia, serif;
+}
+h1, h2, h3, h4{
+	font-weight: bold;
+	color: #3a3a3a;
+}
+
+.text {
+
+	&.center {
+		text-align: center;
+	}
+
+	&.left {
+		text-align: left;
+	}
+
+	&.right {
+		text-align: right;
+	}
+}
