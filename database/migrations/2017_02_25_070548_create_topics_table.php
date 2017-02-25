@@ -15,7 +15,7 @@ class CreateTopicsTable extends Migration
     {
         //
         Schema::enableForeignKeyConstraints();
-        Schema::create('visions', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
             $table->string('topic');
             $table->timestamps();

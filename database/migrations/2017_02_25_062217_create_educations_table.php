@@ -15,7 +15,7 @@ class CreateEducationsTable extends Migration
     {
         //
         Schema::enableForeignKeyConstraints();
-        Schema::create('visions', function (Blueprint $table) {
+        Schema::create('educations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('candidate_id')->unsigned();
             $table->foreign('candidate_id')->references('id')
