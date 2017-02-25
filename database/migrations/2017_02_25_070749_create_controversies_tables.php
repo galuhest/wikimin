@@ -22,6 +22,11 @@ class CreateControversiesTables extends Migration
               ->on('topics')
               ->onUpdate('cascade')
               ->onDelete('cascade');
+            $table->integer('candidate_id')->unsigned();
+            $table->foreign('candidate_id')->references('id')
+              ->on('person')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
             $table->string('value');
             $table->string('source');
             $table->timestamps();

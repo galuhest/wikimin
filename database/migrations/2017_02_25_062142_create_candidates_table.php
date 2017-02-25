@@ -14,10 +14,19 @@ class CreateCandidatesTable extends Migration
     public function up()
     {
         //
+        Schema::enableForeignKeyConstraints();
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_head', 255);
-            $table->string('name_vice', 255);
+            $table->integer('head_id')->unsigned();
+            $table->foreign('head_id')->references('id')
+              ->on('person')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
+            $table->integer('vice_id')->unsigned();
+            $table->foreign('vice_id')->references('id')
+              ->on('person')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
             $table->timestamps();
         });
     }

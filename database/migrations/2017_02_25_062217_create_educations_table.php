@@ -19,7 +19,7 @@ class CreateEducationsTable extends Migration
             $table->increments('id');
             $table->integer('candidate_id')->unsigned();
             $table->foreign('candidate_id')->references('id')
-              ->on('candidates')
+              ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');
             $table->integer('year_start');
