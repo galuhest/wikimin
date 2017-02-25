@@ -14,7 +14,7 @@
       <p>{{\App\Person::where('id','=',$candidate->head_id)->first()->name}}</p>
     </div>
     <div class="col-md-6">
-      <p>Nama Calon Wakil : {{\App\Person::where('id','=',$candidate->vice_id)->first()->name}}</p>
+      <p>{{\App\Person::where('id','=',$candidate->vice_id)->first()->name}}</p>
     </div>
     <div class="row">
       <h3>Visi</h3>
