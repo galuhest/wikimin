@@ -17,4 +17,7 @@ class Candidate extends Model
     public function missions(){
       return  $this->hasMany('App\Mission');
     }
+    public function programs()  {
+      return $this->hasMany('App\Program');
+    }
 }
