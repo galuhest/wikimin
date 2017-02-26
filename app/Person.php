@@ -16,10 +16,10 @@ class Person extends Model
     public function educations(){
       return  $this->hasMany('App\Education');
     }
-    public function tesimonies(){
+    public function testimonies(){
       return  $this->hasMany('App\Testimony');
     }
-    public function controversies(){
-      return  $this->hasMany('App\Controversy');
+    public function issues(){
+      return  $this->hasMany('App\Issue');
     }
 }

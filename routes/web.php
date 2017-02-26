@@ -43,3 +43,46 @@ Route::group(['prefix'=>'mission'], function() {
   Route::put('/{id}', 'MissionController@update');
   Route::delete('/{id}', 'MissionController@delete');
 });
+
+Route::group(['prefix'=>'education'], function() {
+  Route::get('/{id}', 'EducationController@index');
+  Route::get('/{id}/create', 'EducationController@create');
+  Route::post('/', 'EducationController@store');
+  Route::get('/{id}/edit', 'EducationController@edit');
+  Route::put('/{id}', 'EducationController@update');
+  Route::delete('/{id}', 'EducationController@delete');
+});
+
+Route::group(['prefix'=>'testimony'], function() {
+  Route::get('/{id}', 'TestimonyController@index');
+  Route::get('/{id}/create', 'TestimonyController@create');
+  Route::post('/', 'TestimonyController@store');
+  Route::get('/{id}/edit', 'TestimonyController@edit');
+  Route::put('/{id}', 'TestimonyController@update');
+  Route::delete('/{id}', 'TestimonyController@delete');
+});
+
+Route::group(['prefix'=>'career'], function() {
+  Route::get('/{id}', 'CareerController@index');
+  Route::get('/{id}/create', 'CareerController@create');
+  Route::post('/', 'CareerController@store');
+  Route::get('/{id}/edit', 'CareerController@edit');
+  Route::put('/{id}', 'CareerController@update');
+  Route::delete('/{id}', 'CareerController@delete');
+});
+
+Route::group(['prefix'=>'issue'], function() {
+  Route::get('/{id}', 'IssueController@index');
+  Route::get('/{id}/create', 'IssueController@create');
+  Route::post('/', 'IssueController@store');
+  Route::get('/{id}/edit', 'IssueController@edit');
+  Route::put('/{id}', 'IssueController@update');
+  Route::delete('/{id}', 'IssueController@delete');
+});
+
+Route::group(['prefix'=>'topic'], function() {
+  Route::get('/', 'TopicController@index');
+  Route::get('/create', 'TopicController@create');
+  Route::post('/', 'TopicController@store');
+  Route::delete('/{id}', 'TopicController@delete');
+});

@@ -8,7 +8,7 @@ class Career extends Model
 {
     //
     protected $table = 'careers';
-    protected $fillable = ['candidate_id',
+    protected $fillable = ['person_id',
       'year_start',
       'year_end',
       'institution',

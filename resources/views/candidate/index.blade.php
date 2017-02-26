@@ -23,6 +23,12 @@
       <a class="btn" href='{{url("vision/$candidate->id/")}}'>Lihat</a>
     </div>
     <div class="row">
+      <h3>Misi</h3>
+      <a class="btn" href='{{url("mission/$candidate->id/create")}}'>Tambah</a>
+      <a class="btn" href='{{url("mission/$candidate->id/edit")}}'>Edit</a>
+      <a class="btn" href='{{url("mission/$candidate->id/")}}'>Lihat</a>
+    </div>
+    <div class="row">
       <h3>Program</h3>
       <a class="btn" href='{{url("program/$candidate->id/create")}}'>Tambah</a>
       <a class="btn" href='{{url("program/$candidate->id/edit")}}'>Edit</a>
@@ -62,14 +68,14 @@
       </div>
     </div>
     <div class="row">
-      <h3>Kontroversi</h3>
+      <h3>Isu</h3>
       <div class="col-md-6">
-        <a class="btn" href='{{url("controversy/$candidate->head_id/create")}}'>Tambah</a>
-        <a class="btn" href='{{url("controversy/$candidate->head_id/")}}'>Lihat</a>
+        <a class="btn" href='{{url("issue/$candidate->head_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("issue/$candidate->head_id/")}}'>Lihat</a>
       </div>
       <div class="col-md-6">
-        <a class="btn" href='{{url("controversy/$candidate->vice_id/create")}}'>Tambah</a>
-        <a class="btn" href='{{url("controversy/$candidate->vice_id/")}}'>Lihat</a>
+        <a class="btn" href='{{url("issue/$candidate->vice_id/create")}}'>Tambah</a>
+        <a class="btn" href='{{url("issue/$candidate->vice_id/")}}'>Lihat</a>
       </div>
     </div>
   </div>

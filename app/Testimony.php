@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Testimony extends Model
 {
     //
-    protected $table = 'candidates';
-    protected $fillable = ['candidate_id',
+    protected $table = 'testimonies';
+    protected $fillable = ['person_id',
             'year_given',
             'voucher',
             'testimony',
             'source'];
+
+    public function topic() {
+      $this->belongsTo("App\Topic");
+    }
 }

@@ -8,7 +8,7 @@ class Education extends Model
 {
     //
     protected $table = 'educations';
-    protected $fillable = ['candidate_id',
+    protected $fillable = ['person_id',
         'year_start',
         'year_end',
         'institution',
