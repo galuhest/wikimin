@@ -14,6 +14,23 @@ class CreateIssuesTable extends Migration
     public function up()
     {
         //
+        Schema::enableForeignKeyConstraints();
+        Schema::create('issues', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('topic_id')->unsigned();
+            $table->foreign('topic_id')->references('id')
+              ->on('topics')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
+            $table->integer('person_id')->unsigned();
+            $table->foreign('person_id')->references('id')
+              ->on('person')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
+            $table->string('value');
+            $table->string('source');
+            $table->timestamps();
+        });
     }
 
     /**

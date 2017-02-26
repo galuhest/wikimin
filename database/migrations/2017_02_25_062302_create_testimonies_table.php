@@ -17,8 +17,8 @@ class CreateTestimoniesTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('testimonies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('candidate_id')->unsigned();
-            $table->foreign('candidate_id')->references('id')
+            $table->integer('person_id')->unsigned();
+            $table->foreign('person_id')->references('id')
               ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');

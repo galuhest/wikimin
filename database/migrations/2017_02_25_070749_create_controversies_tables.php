@@ -17,8 +17,8 @@ class CreateControversiesTables extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('controversies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->unsigned();
-            $table->foreign('topic_id')->references('id')
+            $table->integer('person')->unsigned();
+            $table->foreign('person')->references('id')
               ->on('topics')
               ->onUpdate('cascade')
               ->onDelete('cascade');
