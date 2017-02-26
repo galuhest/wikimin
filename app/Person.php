@@ -22,4 +22,7 @@ class Person extends Model
     public function issues(){
       return  $this->hasMany('App\Issue');
     }
+    public function awards() {
+      return $this->hasMany('App\Award');
+    }
 }

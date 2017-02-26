@@ -80,6 +80,14 @@ Route::group(['prefix'=>'issue'], function() {
   Route::delete('/{id}', 'IssueController@delete');
 });
 
+Route::group(['prefix'=>'award'], function() {
+  Route::get('/{id}', 'AwardController@index');
+  Route::get('/{id}/create', 'AwardController@create');
+  Route::post('/', 'AwardController@store');
+  Route::get('/{id}/edit', 'AwardController@edit');
+  Route::put('/{id}', 'AwardController@update');
+  Route::delete('/{id}', 'AwardController@delete');
+});
 Route::group(['prefix'=>'topic'], function() {
   Route::get('/', 'TopicController@index');
   Route::get('/create', 'TopicController@create');
