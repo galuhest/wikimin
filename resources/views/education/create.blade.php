@@ -1,4 +1,5 @@
-
+@extends('template.app')
+@section('content')
 <form action="{{action('EducationController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-4">
     <input hidden type="text" value="{{$id}}" name="id">
@@ -19,3 +20,4 @@
   {{csrf_field()}}
   <button type="submit" class="btn btn-default">submit</button>
 </form>
+@endsection

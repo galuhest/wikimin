@@ -1,3 +1,5 @@
+@extends('template.app')
+@section('content')
 @foreach($topics as $topic)
   <div class="col-md-4">
     <h3>{{$topic->id}}</h3>
@@ -11,3 +13,4 @@
     </form>
   </div>
 @endforeach
+@endsection

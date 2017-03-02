@@ -1,4 +1,5 @@
-
+@extends('template.app')
+@section('content')
 @foreach($candidates as $candidate)
   <div class="col-md-6">
     <form method="POST" action='{{url("/candidate/$candidate->id")}}'>
@@ -80,3 +81,4 @@
     </div>
   </div>
 @endforeach
+@endsection

@@ -1,4 +1,5 @@
-
+@extends('template.app')
+@section('content')
 <form action="{{action('TopicController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-4">
     <div class="form-group">
@@ -11,3 +12,4 @@
   {{csrf_field()}}
   <button type="submit" class="btn btn-default">submit</button>
 </form>
+@endsection

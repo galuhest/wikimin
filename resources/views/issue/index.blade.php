@@ -1,4 +1,5 @@
-
+@extends('template.app')
+@section('content')
 @foreach($issues as $issue)
   <div class="col-md-4">
     <h3>{{$issue->id}}</h3>
@@ -14,3 +15,4 @@
     </form>
   </div>
 @endforeach
+@endsection

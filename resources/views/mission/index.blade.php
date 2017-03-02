@@ -1,4 +1,5 @@
-
+@extends('template.app')
+@section('content')
 @foreach($missions as $mission)
   <div class="col-md-4">
     <h3>{{$mission->id}}</h3>
@@ -13,3 +14,4 @@
     </form>
   </div>
 @endforeach
+@endsection
