@@ -1,6 +1,7 @@
 @extends('template.app')
 @section('content')
 <form action="{{action('CandidateController@store')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+  <div class="col-md-12">
   <div class="col-md-4">
     <div class="form-group">
       <label>Nama Calon Gubernur : </label><input class="form-control" type="text" name="head" placeholder="nama calon gubernur">
@@ -17,7 +18,8 @@
             <input type="file" id="exampleInputFile" name="photo-vice">
     </div>
   </div>
+</div>
 {{csrf_field()}}
-  <button type="submit" class="btn btn-default">submit</button>
+  <button type="submit" class="btn btn-success">submit</button>
 </form>
 @endsection

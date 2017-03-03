@@ -29,3 +29,12 @@
   <button type="submit" class="btn btn-default">submit</button>
 </form>
 @endsection
+@section('js')
+<script>
+  $('#more').click(function() {
+    input = $('.form-horizontal').find('div.inputs');
+    input.html($(".inputs").html()+$(".template").html());
+    input.attr('class','ex')
+  });
+</script>
+@endsection
