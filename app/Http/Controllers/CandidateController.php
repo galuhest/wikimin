@@ -10,9 +10,62 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Candidate;
 use App\Person;
+use App\Program;
+use App\Vision;
+use App\Mission;
+use App\Testimony;
+use App\Education;
+use App\Career;
+use App\Award;
 
 class CandidateController extends Controller
 {
+    public function welcome()
+    {
+        //constructing candidates array
+        $ahokdjarotq = Candidate::where('id', '=', '1')->first();
+            $ahokdjarot['programs'] = Program::where('candidate_id','=',$ahokdjarotq->id)->get();
+            $ahokdjarot['visions'] = Vision::where('candidate_id','=',$ahokdjarotq->id)->get();
+            $ahokdjarot['missions'] = Mission::where('candidate_id','=',$ahokdjarotq->id)->get();
+
+        $aniessandiq = Candidate::where('id', '=', '2')->first();
+            $aniessandi['programs'] = Program::where('candidate_id','=',$aniessandiq->id)->get();
+            $aniessandi['visions'] = Vision::where('candidate_id','=',$aniessandiq->id)->get();
+            $aniessandi['missions'] = Mission::where('candidate_id','=',$aniessandiq->id)->get();
+
+        $candidates = array($ahokdjarot, $aniessandi);
+
+        //constructing persons array
+        $djarotq = Person::where('name', '=', 'djarot')->first();
+            $djarot["name"] = $djarotq->name;
+            $djarot["testimonies"] = Testimony::where('person_id','=',$djarotq->id)->get();
+            $djarot["educations"] = Education::where('person_id','=',$djarotq->id)->get();
+            $djarot["careers"] = Career::where('person_id','=',$djarotq->id)->get();
+            $djarot["awards"] = Award::where('person_id','=',$djarotq->id)->get();
+        $ahokq = Person::where('name', '=', 'ahok')->first();
+            $ahok["name"] = $ahokq->name;
+            $ahok["testimonies"] = Testimony::where('person_id','=',$ahokq->id)->get();
+            $ahok["educations"] = Education::where('person_id','=',$ahokq->id)->get();
+            $ahok["careers"] = Career::where('person_id','=',$ahokq->id)->get();
+            $ahok["awards"] = Award::where('person_id','=',$ahokq->id)->get();
+        $aniesq = Person::where('name', '=', 'anies')->first();
+            $anies["name"] = $aniesq->name;
+            $anies["testimonies"] = Testimony::where('person_id','=',$aniesq->id)->get();
+            $anies["educations"] = Education::where('person_id','=',$aniesq->id)->get();
+            $anies["careers"] = Career::where('person_id','=',$aniesq->id)->get();
+            $anies["awards"] = Award::where('person_id','=',$aniesq->id)->get();
+        $sandiq = Person::where('name', '=', 'sandi')->first();
+            $sandi["name"] = $sandiq->name;
+            $sandi["testimonies"] = Testimony::where('person_id','=',$sandiq->id)->get();
+            $sandi["educations"] = Education::where('person_id','=',$sandiq->id)->get();
+            $sandi["careers"] = Career::where('person_id','=',$sandiq->id)->get();
+            $sandi["awards"] = Award::where('person_id','=',$sandiq->id)->get();
+
+        $persons = array($djarot, $ahok, $anies, $sandi);
+
+        return view('welcome', compact('candidates', 'persons'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,8 +101,8 @@ class CandidateController extends Controller
         $rules = array(
             'head' => 'required',
             'vice' => 'required',
-            'photo-head' => 'required|mimes:jpeg,png,bmp,jpg',
-            'photo-vice' => 'required|mimes:jpeg,png,bmp,jpg'
+            /*'photo-head' => 'required|mimes:jpeg,png,bmp,jpg',
+            'photo-vice' => 'required|mimes:jpeg,png,bmp,jpg'*/
         );
         $validator = Validator::make(Input::all(), $rules);
         // process the login
@@ -73,14 +126,6 @@ class CandidateController extends Controller
         $candidate->head_id = Person::where('name','like',$head)->first()->id;
         $candidate->vice_id = Person::where('name','like',$vice)->first()->id;
         $candidate->save();
-
-        $file = $request->file('photo-head');
-        $name = $file->getClientOriginalName();
-        $path = $file->storeAs("photo", $head);
-
-        $file = $request->file('photo-vice');
-        $name = $file->getClientOriginalName();
-        $path = $file->storeAs("photo", $vice);
 
         return redirect('/candidate');
     }

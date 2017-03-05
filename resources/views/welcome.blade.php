@@ -48,32 +48,36 @@
 
 <h2 class="text center" id="visi-misi-program">Visi, Misi, Program<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
 <div class="row">
+    @foreach ($candidates as $candidate)
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Program</h4>
+            @forelse ($candidate["programs"] as $program)
+                <p>{{ $program->value }}</p>
+            @empty
+                <p>No programs</p>
+            @endforelse
         </div>
     </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
+            @forelse ($candidate["visions"] as $vision)
+                <p>{{ $vision->value }}</p>
+            @empty
+                <p>No visions</p>
+            @endforelse
         </div>
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
+            @forelse ($candidate["missions"] as $mission)
+                <p>{{ $mission->value }}</p>
+            @empty
+                <p>No missions</p>
+            @endforelse
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Visi</h4>
-        </div>
-        <div class="kotak-putih">
-            <h4 class="text center">Misi</h4>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Program</h4>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <h2 class="text center" id="pendapat">Pendapat<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
@@ -110,36 +114,18 @@
     <small>Tes</small>
 </h2>
 <div class="row">
+    @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
-            <h4 class="text center">Djarot</h4>
-
+            <h4 class="text center">{{$person["name"]}}</h4>
+            @forelse ($person["testimonies"] as $testimony)
+                <p>{{ $testimony->value }}</p>
+            @empty
+                <p>No testimonies</p>
+            @endforelse
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Ahok</h4>
-            <div>
-                <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#buktiModal" aria-hidden="true" style="cursor: target;"></span>
-                <strong>Rian Ernest</strong><br>
-                <a href="http://www.kompasiana.com/rianernest/catatan-jongos-dua-cagub-dki_58a19bcadf22bd10091f6c7b">Catatan "Jongos" Dua Cagub DKI</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <div>
-                <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#buktiModal" aria-hidden="true" style="cursor: target;"></span>
-                <strong>Rian Ernest</strong><br>
-                <a href="http://www.kompasiana.com/rianernest/catatan-jongos-dua-cagub-dki_58a19bcadf22bd10091f6c7b">Catatan "Jongos" Dua Cagub DKI</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Sandi</h4>
-        </div>
-    </div>
+    @endforeach
 </div>
 <div class="text center">
     <a href="#atas">kembali ke atas</a>
@@ -147,35 +133,23 @@
 
 <h2 class="text center" id="pendidikan">Pendidikan<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
 <div class="row">
+    @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
-            <h4 class="text center">Djarot</h4>
+            <h4 class="text center">{{$person["name"]}}</h4>
             <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#buktiModal" aria-hidden="true" style="cursor: target;"></span>
-            <b>1977</b><br>SMP N 4 Surabaya<br><br><b>1981</b><br>SMA Taruna Nusa Harapan<br><br><b>1986</b><br>Sarjana Administrasi Pemerintahan Umum, Universitas Brawijaya, Malang<br><br><b>1991</b><br>Pasca Sarjana, Administrasi Negara, Universitas Gadjah Mada, Yogyakarta
+            @forelse ($person["educations"] as $education)
+            <b>{{$education->year_start}}-{{$education->year_end}}</b><br>{{$education->institution}}<br>{{$education->degree}}
+            @empty
+                <p>No educations</p>
+            @endforelse
             <hr>
             <div class="text center">
                 <a href="#">Tambah/Koreksi Informasi Pendidikan Djarot?</a>
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Ahok</h4>
-            <b>1977</b><br>SD N 3 Gantung, Belitung<br><br><b>1981</b><br>SMP Negeri Gantung<br><br><b>1984</b><br>SMA Swasta III PSKD, Jakarta<br><br><b>1990</b><br>Teknik Geologi, Universitas Trisakti, Jakarta.<br><br><b>1994<br></b>Magister Manajemen, Sekolah Tinggi Manajemen Prasetya Mulya
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Anies</h4>
-            <b>1992</b><br>SMA N 2 Yogyakarta<br><br><b>1995</b><br>Ilmu Manajemen, Universitas Gadjah Mada<br><br><b>1998</b><br>Master of Public Management, University of Maryland, USA<br><br><b>2007</b><br>Doctor of Philosophy, Political Science, Northern Illinois University
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Sandi</h4>
-            <b>1987</b><br>SMA Swasta Pangudi Luhur<br><br><b>1990</b><br>Bachelor of Business Administration, Wichita State University, USA<br><br><b>1992</b><br>Master of Business Administration, George Washington University
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <div class="modal fade" id="buktiModal" tabindex="-1" role="dialog" aria-labelledby="buktiModal">
@@ -194,49 +168,33 @@
 
 <h2 class="text center" id="karir">Karir<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
 <div class="row">
+    @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
-            <h4 class="text center">Djarot</h4>
+            <h4 class="text center">{{$person["name"]}}</h4>
+            @forelse ($person["careers"] as $career)
+                <p>{{ $career->value }}</p>
+            @empty
+                <p>No careers</p>
+            @endforelse
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Ahok</h4>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Anies</h4>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Sandi</h4>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <h2 class="text center" id="penghargaan">Penghargaan<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
 <div class="row">
+    @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
-            <h4 class="text center">Djarot</h4>
+            <h4 class="text center">{{$person["name"]}}</h4>
+            @forelse ($person["awards"] as $award)
+                <p>{{ $award->value }}</p>
+            @empty
+                <p>No careers</p>
+            @endforelse
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Ahok</h4>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Anies</h4>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Sandi</h4>
-        </div>
-    </div>
+    @endforeach
 </div>
 @endsection
