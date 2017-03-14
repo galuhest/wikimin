@@ -1,4 +1,5 @@
 @extends('template.app')
+
 @section('content')
 <form action="{{action('EducationController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-12">
@@ -16,7 +17,10 @@
           <label>Jurusan/Gelar <input type="text" name="degree[]" class="form-control"> (kosongkan jika tidak dapat diaplikasikan)
         </div>
         <div class="form-group">
-          <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
+          <label> URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="">
+        </div>
+        <div class="form-group">
+          <label> Teks Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="">
         </div>
       </div>
       <hr>
@@ -44,7 +48,10 @@
           <label>Jurusan/Gelar <input type="text" name="degree[]" class="form-control"> (kosongkan jika tidak dapat diaplikasikan)
         </div>
         <div class="form-group">
-          <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
+          <label> URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="">
+        </div>
+        <div class="form-group">
+          <label> Teks Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="">
         </div>
       </div>
       <hr>
@@ -54,6 +61,7 @@
   </div>
 </div>
 @endsection
+
 @section('js')
 <script>
   $('#more').click(function() {

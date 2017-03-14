@@ -13,7 +13,8 @@ class TestimonyController extends Controller
     //
     public function index($id) {
       $testimonys = Person::find($id)->testimonies;
-      return view('testimony.index',compact('testimonys'));
+      $person_id = $id;
+      return view('testimony.index',compact('testimonys', 'person_id'));
     }
 
     public function create($id)  {
@@ -26,6 +27,7 @@ class TestimonyController extends Controller
       $voucher = Input::get('voucher');
       $value = Input::get('testimony');
       $sources = Input::get('source');
+      $source_links = Input::get('source_link');
 
       for($i = 0; $i < count($value); $i++)  {
         $testimony = new Testimony();
@@ -34,6 +36,7 @@ class TestimonyController extends Controller
         $testimony->year_given = $year_given[$i];
         $testimony->testimony = $value[$i];
         $testimony->source = $sources[$i];
+        $testimony->source_link = $source_links[$i];
         $testimony->save();
       }
       return redirect("/testimony/$id");

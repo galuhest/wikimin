@@ -36,25 +36,25 @@ class CandidateController extends Controller
         $candidates = array($ahokdjarot, $aniessandi);
 
         //constructing persons array
-        $djarotq = Person::where('name', '=', 'djarot')->first();
+        $djarotq = Person::where('name', '=', 'Djarot')->first();
             $djarot["name"] = $djarotq->name;
             $djarot["testimonies"] = Testimony::where('person_id','=',$djarotq->id)->get();
             $djarot["educations"] = Education::where('person_id','=',$djarotq->id)->get();
             $djarot["careers"] = Career::where('person_id','=',$djarotq->id)->get();
             $djarot["awards"] = Award::where('person_id','=',$djarotq->id)->get();
-        $ahokq = Person::where('name', '=', 'ahok')->first();
+        $ahokq = Person::where('name', '=', 'Ahok')->first();
             $ahok["name"] = $ahokq->name;
             $ahok["testimonies"] = Testimony::where('person_id','=',$ahokq->id)->get();
             $ahok["educations"] = Education::where('person_id','=',$ahokq->id)->get();
             $ahok["careers"] = Career::where('person_id','=',$ahokq->id)->get();
             $ahok["awards"] = Award::where('person_id','=',$ahokq->id)->get();
-        $aniesq = Person::where('name', '=', 'anies')->first();
+        $aniesq = Person::where('name', '=', 'Anies')->first();
             $anies["name"] = $aniesq->name;
             $anies["testimonies"] = Testimony::where('person_id','=',$aniesq->id)->get();
             $anies["educations"] = Education::where('person_id','=',$aniesq->id)->get();
             $anies["careers"] = Career::where('person_id','=',$aniesq->id)->get();
             $anies["awards"] = Award::where('person_id','=',$aniesq->id)->get();
-        $sandiq = Person::where('name', '=', 'sandi')->first();
+        $sandiq = Person::where('name', '=', 'Sandi')->first();
             $sandi["name"] = $sandiq->name;
             $sandi["testimonies"] = Testimony::where('person_id','=',$sandiq->id)->get();
             $sandi["educations"] = Education::where('person_id','=',$sandiq->id)->get();

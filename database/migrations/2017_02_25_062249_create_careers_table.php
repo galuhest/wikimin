@@ -38,6 +38,6 @@ class CreateCareersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('careers');
     }
 }

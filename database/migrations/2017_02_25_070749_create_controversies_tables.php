@@ -40,6 +40,6 @@ class CreateControversiesTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('controversies');
     }
 }

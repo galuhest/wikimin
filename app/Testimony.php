@@ -8,11 +8,7 @@ class Testimony extends Model
 {
     //
     protected $table = 'testimonies';
-    protected $fillable = ['person_id',
-            'year_given',
-            'voucher',
-            'testimony',
-            'source'];
+    protected $guarded = [];
 
     public function topic() {
       $this->belongsTo("App\Topic");

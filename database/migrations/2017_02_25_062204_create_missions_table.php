@@ -35,6 +35,6 @@ class CreateMissionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('missions');
     }
 }

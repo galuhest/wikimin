@@ -46,13 +46,42 @@
     </a>
 </div>
 
-<h2 class="text center" id="visi-misi-program">Visi, Misi, Program<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
+<h2 class="text center" id="visi-misi-program">
+    Visi, Misi, &amp; Program
+</h2>
 <div class="row">
-    @foreach ($candidates as $candidate)
+    <div class="col-sm-3">
+        <div class="kotak-putih">
+            <h4 class="text center">Visi</h4>
+            @forelse ($candidates[0]["visions"] as $vision)
+                <p>{{ $vision->value }}</p>
+            @empty
+                <p>No visions</p>
+            @endforelse
+        </div>
+        <div class="kotak-putih">
+            <h4 class="text center">Misi</h4>
+            @forelse ($candidates[0]["missions"] as $mission)
+                <p>{{ $mission->value }}</p>
+            @empty
+                <p>No missions</p>
+            @endforelse
+        </div>
+    </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Program</h4>
-            @forelse ($candidate["programs"] as $program)
+            @forelse ($candidates[0]["programs"] as $program)
+                <p>{{ $program->value }}</p>
+            @empty
+                <p>No programs</p>
+            @endforelse
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="kotak-putih">
+            <h4 class="text center">Program</h4>
+            @forelse ($candidates[1]["programs"] as $program)
                 <p>{{ $program->value }}</p>
             @empty
                 <p>No programs</p>
@@ -62,7 +91,7 @@
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
-            @forelse ($candidate["visions"] as $vision)
+            @forelse ($candidates[1]["visions"] as $vision)
                 <p>{{ $vision->value }}</p>
             @empty
                 <p>No visions</p>
@@ -70,68 +99,141 @@
         </div>
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
-            @forelse ($candidate["missions"] as $mission)
+            @forelse ($candidates[1]["missions"] as $mission)
                 <p>{{ $mission->value }}</p>
             @empty
                 <p>No missions</p>
             @endforelse
         </div>
     </div>
-    @endforeach
+</div>
+<div class="text center">
+    <a href="#atas">kembali ke atas</a>
 </div>
 
-<h2 class="text center" id="pendapat">Pendapat<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
+<h2 class="text center" id="pendapat">
+    Pendapat
+    @php
+        $topics = App\Topic::all();
+    @endphp
+</h2>
 <div class="row">
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Djarot</h4>
+            @forelse($topics as $t)
+                @php
+                    $issues = App\Issue::where("person_id", 2)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($issues->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($issues as $i)
+                        <p>
+                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
+            @empty
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
+            @endforelse
         </div>
     </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Ahok</h4>
-            <strong>Lingkungan</strong>
-            <ul>
-                <li>"Tes satu dua tiga" ~ <a href="#">Kompas.com</a></li>
-                <li></li>
-            </ul>
+            @forelse($topics as $t)
+                @php
+                    $issues = App\Issue::where("person_id", 1)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($issues->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($issues as $i)
+                        <p>
+                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
+            @empty
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
+            @endforelse
         </div>
     </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Anies</h4>
+            @forelse($topics as $t)
+                @php
+                    $issues = App\Issue::where("person_id", 3)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($issues->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($issues as $i)
+                        <p>
+                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
+            @empty
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
+            @endforelse
         </div>
     </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Sandi</h4>
+            @forelse($topics as $t)
+                @php
+                    $issues = App\Issue::where("person_id", 4)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($issues->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($issues as $i)
+                        <p>
+                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
+            @empty
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
+            @endforelse
         </div>
     </div>
+</div>
+<div class="text center">
+    <a href="#atas">kembali ke atas</a>
 </div>
 
 <h2 class="text center" id="testimoni">
     Testimoni<br>
-    <small>Tes</small>
+    <small>Pengakuan Mereka yang Pernah Berkerja Langsung dengan Kandidat</small>
 </h2>
 <div class="row">
+    
     @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
-            @forelse ($person["testimonies"] as $testimony)
-                <p>{{ $testimony->value }}</p>
+            @forelse ($person["testimonies"] as $t)
+                <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
+                @if($t->testimony)
+                    <em>"{{$t->testimony}}"</em><br>
+                @endif
+                <a href="{{$t->source_link}}">{{$t->source}}</a><br>
             @empty
                 <p>No testimonies</p>
             @endforelse
         </div>
     </div>
     @endforeach
+    
 </div>
 <div class="text center">
     <a href="#atas">kembali ke atas</a>
 </div>
 
-<h2 class="text center" id="pendidikan">Pendidikan<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
+<h2 class="text center" id="testimoni">
+    Pendidikan
+</h2>
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
@@ -151,6 +253,9 @@
     </div>
     @endforeach
 </div>
+<div class="text center">
+    <a href="#atas">kembali ke atas</a>
+</div>
 
 <div class="modal fade" id="buktiModal" tabindex="-1" role="dialog" aria-labelledby="buktiModal">
     <div class="modal-dialog" role="document">
@@ -166,7 +271,9 @@
     </div>
 </div>
 
-<h2 class="text center" id="karir">Karir<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
+<h2 class="text center" id="karir">
+    Karir
+</h2>
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
@@ -181,8 +288,13 @@
     </div>
     @endforeach
 </div>
+<div class="text center">
+    <a href="#atas">kembali ke atas</a>
+</div>
 
-<h2 class="text center" id="penghargaan">Penghargaan<sup><a href="#atas"><span class="glyphicon glyphicon-arrow-up"></span></a></sup></h2>
+<h2 class="text center" id="penghargaan">
+    Penghargaan
+</h2>
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
@@ -197,4 +309,9 @@
     </div>
     @endforeach
 </div>
+<div class="text center">
+    <a href="#atas">kembali ke atas</a>
+</div>
+
 @endsection
+

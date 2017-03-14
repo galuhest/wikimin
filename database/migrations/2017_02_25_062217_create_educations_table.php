@@ -27,6 +27,7 @@ class CreateEducationsTable extends Migration
             $table->string('institution',255);
             $table->string('degree')->nullable();
             $table->string('source');
+            $table->text('source_link');
             $table->timestamps();
         });
     }
@@ -38,6 +39,6 @@ class CreateEducationsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('educations');
     }
 }
