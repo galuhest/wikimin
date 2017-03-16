@@ -12,4 +12,8 @@ class Issue extends Model
           'topic_id',
           'source',
           'value'];
+
+      public function topic() {
+        $this->belongsTo("App\Topic");
+      }
 }

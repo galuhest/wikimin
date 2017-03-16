@@ -14,7 +14,4 @@ class Testimony extends Model
             'testimony',
             'source'];
 
-    public function topic() {
-      $this->belongsTo("App\Topic");
-    }
 }

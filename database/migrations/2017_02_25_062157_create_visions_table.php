@@ -22,7 +22,7 @@ class CreateVisionsTable extends Migration
               ->on('candidates')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->string('value',500);
+            $table->string('value');
             $table->string('source');
             $table->timestamps();
         });
