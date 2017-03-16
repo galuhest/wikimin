@@ -22,11 +22,12 @@ class CreateCareersTable extends Migration
               ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->integer('year_start');
+            $table->integer('year_start')->nullable();
             $table->integer('year_end')->nullable();
             $table->string('institution',255);
-            $table->string('position')->nullable();
-            $table->string('source');
+            $table->text('position')->nullable();
+            $table->text('source');
+            $table->text('source_link');
             $table->timestamps();
         });
     }

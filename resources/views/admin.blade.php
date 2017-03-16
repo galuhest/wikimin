@@ -182,10 +182,10 @@
         <div class="kotak-putih">
             <h4 class="text center">Djarot</h4>
             <p>
-                <a href="{{url('testimony/4/create')}}">Tambah</a>
+                <a href="{{url('testimony/2/create')}}">Tambah</a>
             </p>
             <p>
-                <a href="{{url('testimony/4')}}">Lihat</a>
+                <a href="{{url('testimony/2')}}">Lihat</a>
             </p>
         </div>
     </div>
@@ -235,10 +235,10 @@
         <div class="kotak-putih">
             <h4 class="text center">Djarot</h4>
             <p>
-                <a href="{{url('education/4/create')}}">Tambah</a>
+                <a href="{{url('education/2/create')}}">Tambah</a>
             </p>
             <p>
-                <a href="{{url('education/4')}}">Lihat</a>
+                <a href="{{url('education/2')}}">Lihat</a>
             </p>
         </div>
     </div>
@@ -289,10 +289,10 @@
         <div class="kotak-putih">
             <h4 class="text center">Djarot</h4>
             <p>
-                <a href="{{url('career/4/create')}}">Tambah</a>
+                <a href="{{url('career/2/create')}}">Tambah</a>
             </p>
             <p>
-                <a href="{{url('career/4')}}">Lihat</a>
+                <a href="{{url('career/2')}}">Lihat</a>
             </p>
         </div>
     </div>
@@ -343,10 +343,10 @@
         <div class="kotak-putih">
             <h4 class="text center">Djarot</h4>
             <p>
-                <a href="{{url('award/4/create')}}">Tambah</a>
+                <a href="{{url('award/2/create')}}">Tambah</a>
             </p>
             <p>
-                <a href="{{url('award/4')}}">Lihat</a>
+                <a href="{{url('award/2')}}">Lihat</a>
             </p>
         </div>
     </div>

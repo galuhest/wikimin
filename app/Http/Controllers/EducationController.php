@@ -13,7 +13,8 @@ class EducationController extends Controller
     //
     public function index($id) {
       $educations = Person::find($id)->educations;
-      return view('education.index',compact('educations'));
+      $person_id = $id;
+      return view('education.index',compact('educations', 'person_id'));
     }
 
     public function create($id)  {
@@ -27,6 +28,7 @@ class EducationController extends Controller
       $year_end = Input::get('year_end');
       $degree = Input::get('degree');
       $sources = Input::get('source');
+      $source_links = Input::get('source_link');
 
       for($i = 0; $i < count($institution); $i++)  {
         $education = new Education();

@@ -1,24 +1,29 @@
 @extends('template.app')
 @section('content')
+<a href='{{url("/career/".$id)}}' class="btn btn-default">Lihat Karir</a>
+<hr>
+<h3>Tambah Karir</h3>
 <form action="{{action('CareerController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-12">
     <div class="col-md-4">
       <input hidden type="text" value="{{$id}}" name="id">
+      <label>Tahun : </label>
       <div class="form-group">
-        <div class="form-group">
-          <label>Institusi : </label><input class="form-control" type="text" name="institution[]" placeholder="education">
-        </div>
-        <label>Tahun : </label>
-        <div class="form-group">
-           <span class="col-md-3"><input type="numeric" name="year_start[]" placeholder="dari (YYYY)" class="form-control"></span> <span class="col-md-1">-</span> <span class="col-md-3"><input type="numeric" name="year_end[]" placeholder="sampai (YYYY)" class="form-control"></span>
-        </div>
-        <div class="form-group">
-          <label>Jurusan/Gelar <input type="text" name="position[]" class="form-control"> (kosongkan jika tidak dapat diaplikasikan)
-        </div>
-        <div class="form-group">
-          <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
-        </div>
+         <span class="col-md-3"><input type="numeric" name="year_start[]" placeholder="dari (YYYY)" class="form-control"></span> <span class="col-md-1">-</span> <span class="col-md-3"><input type="numeric" name="year_end[]" placeholder="sampai (YYYY)" class="form-control"></span>
       </div>
+      <div class="form-group">
+        <label>Institusi : </label><input class="form-control" type="text" name="institution[]" placeholder="Tempat Berkarir">
+      </div>
+      <div class="form-group">
+        <label>Posisi <input type="text" name="position[]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label> URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="sumber">
+      </div>
+      <div class="form-group">
+        <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
+      </div>
+
       <hr>
     </div>
   </div>

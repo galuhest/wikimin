@@ -13,7 +13,8 @@ class AwardController extends Controller
     //
     public function index($id) {
       $awards = Person::find($id)->awards;
-      return view('award.index',compact('awards'));
+      $person_id = $id;
+      return view('award.index',compact('awards', 'person_id'));
     }
 
     public function create($id)  {
@@ -24,14 +25,18 @@ class AwardController extends Controller
       $id = Input::get('id');
       $year_given = Input::get('year_given');
       $awards = Input::get('award');
+      $institution = Input::get('institution');
       $sources = Input::get('source');
+      $source_link = Input::get('source_link');
 
       for($i = 0; $i < count($awards); $i++)  {
         $award = new Award();
         $award->person_id = $id;
         $award->award = $awards[$i];
+        $award->institution = $institution[$i];
         $award->year_given = $year_given[$i];
         $award->source = $sources[$i];
+        $award->source_link = $source_link[$i];
         $award->save();
       }
       return redirect("/award/$id");

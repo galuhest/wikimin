@@ -124,5 +124,34 @@ class DatabaseSeeder extends Seeder
         	'source_link' => 'http://pelitabatak.com/opini/Pengalaman-Jhonsar-Lumbantoruan-bersama-Ahok-di-DPR-RI',
         	'source' => 'Pengalaman Bersama Ahok di DPR RI'
         ]);
+
+        DB::table('educations')->insert([
+            'id' => 1,
+            'person_id' => 1,
+            'year_end' => 1977,
+            'institution' => 'SD N 3 Gantung, Belitung',
+            'source' => 'Scan Ijazah dari KPU',
+            'source_link' => 'https://pilkada2017.kpu.go.id/download/calon/2931/2931_FC-Ijazah-Legalisir_1_.pdf/'
+        ]);
+
+        DB::table('careers')->insert([
+            'id' => 1,
+            'person_id' => 3,
+            'year_start' => 2005,
+            'institution' => 'The Indonesian Institute',
+            'position' => 'Direktur Riset',
+            'source' => 'aniesbaswedan.com',
+            'source_link' => 'https://web.archive.org/web/20170131013428/http://aniesbaswedan.com/biografi-anies-baswedan'
+        ]);
+
+        DB::table('awards')->insert([
+            'id' => 1,
+            'person_id' => 1,
+            'year_given' => 2006,
+            'institution' => 'Majalah Tempo',
+            'award' => 'Penghargaan 10 Tokoh yang Mengubah Indonesia',
+            'source' => 'Detikcom',
+            'source_link' => 'https://web.archive.org/web/20170130233408/https://news.detik.com/infografis/d-3319786/basuki-t-purnama-sang-petahana'
+        ]);
     }
 }

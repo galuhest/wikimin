@@ -239,9 +239,12 @@
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
-            <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#buktiModal" aria-hidden="true" style="cursor: target;"></span>
             @forelse ($person["educations"] as $education)
-            <b>{{$education->year_start}}-{{$education->year_end}}</b><br>{{$education->institution}}<br>{{$education->degree}}
+                <p>
+                    <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#eduModal{{$education->id}}" aria-hidden="true" style="cursor: target;"></span>
+                    <b>{{$education->year_start}}-{{$education->year_end}}</b><br>
+                    {{$education->institution}} {{isset($education->degree) ? '&mdash; ('.$education->degree.')' : ''}}
+                </p>
             @empty
                 <p>No educations</p>
             @endforelse
@@ -257,7 +260,9 @@
     <a href="#atas">kembali ke atas</a>
 </div>
 
-<div class="modal fade" id="buktiModal" tabindex="-1" role="dialog" aria-labelledby="buktiModal">
+@foreach($persons as $person)
+@foreach ($person["educations"] as $education)
+<div class="modal fade" id="eduModal{{$education->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -265,11 +270,13 @@
             <h4 class="modal-title" id="buktiModalLabel">Bukti</h4>
           </div>
           <div class="modal-body">
-            Scan Ijazah (KPU) : <a href="https://pilkada2017.kpu.go.id/download/calon/2931/2931_FC-Ijazah-Legalisir_1_.pdf/" target="_blank">https://pilkada2017.kpu.go.id/download/calon/2931/2931_FC-Ijazah-Legalisir_1_.pdf/</a>
+            {{$education->source}}: <a href="{{$education->source_link}}" target="_blank">{{$education->source_link}}</a>
           </div>
         </div>
     </div>
 </div>
+@endforeach
+@endforeach
 
 <h2 class="text center" id="karir">
     Karir
@@ -279,10 +286,14 @@
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
-            @forelse ($person["careers"] as $career)
-                <p>{{ $career->value }}</p>
+            @forelse ($person["careers"] as $c)
+                <p>
+                    <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#careerModal{{$c->id}}" aria-hidden="true" style="cursor: target;"></span>
+                    <b>{{$c->year_start}}-{{$c->year_end}}</b><br>
+                    {{$c->position}}, {{$c->institution}}
+                </p>
             @empty
-                <p>No careers</p>
+                <p>No educations</p>
             @endforelse
         </div>
     </div>
@@ -292,6 +303,24 @@
     <a href="#atas">kembali ke atas</a>
 </div>
 
+@foreach($persons as $person)
+@foreach ($person["careers"] as $c)
+<div class="modal fade" id="careerModal{{$c->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="buktiModalLabel">Bukti</h4>
+          </div>
+          <div class="modal-body">
+            {{$c->source}}: <a href="{{$c->source_link}}" target="_blank">{{$c->source_link}}</a>
+          </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@endforeach
+
 <h2 class="text center" id="penghargaan">
     Penghargaan
 </h2>
@@ -300,10 +329,13 @@
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
-            @forelse ($person["awards"] as $award)
-                <p>{{ $award->value }}</p>
+            @forelse ($person["awards"] as $a)
+                <p>
+                    <b>{{$a->year_given}}</b><br>
+                    {{$a->award}}, <a href="{{$a->source_link}}">{{$a->source}}</a>
+                </p>
             @empty
-                <p>No careers</p>
+                <p>No awards</p>
             @endforelse
         </div>
     </div>

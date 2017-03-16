@@ -1,18 +1,27 @@
 @extends('template.app')
 @section('content')
+<a href='{{url("/award/".$id)}}' class="btn btn-default">Lihat Award</a>
+<hr>
+<h3>Tambah Award</h3>
 <form action="{{action('AwardController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-12">
     <div class="col-md-4">
       <input hidden type="text" value="{{$id}}" name="id">
       <div class="form-group">
         <div class="form-group">
-          <label>Penghargaan : </label><input class="form-control" type="text" name="award[]" placeholder="testimoni">
+          <label>Penghargaan : </label><input class="form-control" type="text" name="award[]" placeholder="Tulis nama penghargaan dan alasan dia diberikan (kalau ada)">
         </div>
         <div class="form-group">
-          <label>Tahun : </label><input class="form-control" type="numeric" name="year_given[]" placeholder="YYYY">
+          <label>Perilis : </label><input class="form-control" type="text" name="institution[]" >
         </div>
         <div class="form-group">
-          <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
+          <label>Tahun Diberikan: </label><input class="form-control" type="numeric" name="year_given[]" placeholder="YYYY">
+        </div>
+        <div class="form-group">
+          <label>URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="sumber">
+        </div>
+        <div class="form-group">
+          <label>Text Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
         </div>
       </div>
       <hr>

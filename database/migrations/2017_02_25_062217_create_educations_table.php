@@ -22,7 +22,7 @@ class CreateEducationsTable extends Migration
               ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->integer('year_start');
+            $table->integer('year_start')->nullable();
             $table->integer('year_end')->nullable();
             $table->string('institution',255);
             $table->string('degree')->nullable();

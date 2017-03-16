@@ -13,7 +13,8 @@ class CareerController extends Controller
     //
     public function index($id) {
       $careers = Person::find($id)->careers;
-      return view('career.index',compact('careers'));
+      $person_id = $id;
+      return view('career.index',compact('careers', 'person_id'));
     }
 
     public function create($id)  {
@@ -27,6 +28,7 @@ class CareerController extends Controller
       $year_end = Input::get('year_end');
       $position = Input::get('position');
       $sources = Input::get('source');
+      $source_link = Input::get('source_link');
 
       for($i = 0; $i < count($institution); $i++)  {
         $career = new Career();
@@ -36,6 +38,8 @@ class CareerController extends Controller
         $career->year_start = $year_start[$i];
         $career->year_end = (isset($year_end[$i])? $year_end[$i]:null);
         $career->source = $sources[$i];
+        $career->source_link = $source_link[$i];
+
         $career->save();
       }
       return redirect("/career/$id");
