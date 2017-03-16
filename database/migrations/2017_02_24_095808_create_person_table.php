@@ -28,6 +28,6 @@ class CreatePersonTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('person');
     }
 }

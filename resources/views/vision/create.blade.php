@@ -6,7 +6,7 @@
       <input hidden type="text" value="{{$id}}" name="id">
       <div class="form-group">
         <label>Visi kandidat : </label><input class="form-control" type="text" name="visi[]" placeholder="visi">
-        <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
+        <label>Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
       </div>
     </div>
   </div>

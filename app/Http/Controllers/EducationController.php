@@ -36,6 +36,7 @@ class EducationController extends Controller
         $education->year_start = $year_start[$i];
         $education->year_end = (isset($year_end[$i])? $year_end[$i]:null);
         $education->source = $sources[$i];
+        $education->source_link = $source_links[$i];
         $education->save();
       }
       return redirect("/education/$id");

@@ -35,6 +35,6 @@ class CreateVisionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('visions');
     }
 }

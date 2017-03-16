@@ -24,8 +24,9 @@ class CreateTestimoniesTable extends Migration
               ->onDelete('cascade');
             $table->integer('year_given');
             $table->string('voucher',255);
-            $table->string('testimony');
+            $table->string('testimony')->nullable();
             $table->string('source');
+            $table->string('source_link');
             $table->timestamps();
         });
     }
@@ -37,6 +38,6 @@ class CreateTestimoniesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('testimonies');
     }
 }

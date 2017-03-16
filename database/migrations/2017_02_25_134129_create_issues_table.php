@@ -27,7 +27,8 @@ class CreateIssuesTable extends Migration
               ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->string('value');
+            $table->text('value');
+            $table->text('source_link');
             $table->string('source');
             $table->timestamps();
         });
@@ -40,6 +41,6 @@ class CreateIssuesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('issues');
     }
 }

@@ -13,7 +13,8 @@ class IssueController extends Controller
     //
     public function index($id) {
       $issues = Person::find($id)->issues;
-      return view('issue.index',compact('issues'));
+      $person_id = $id;
+      return view('issue.index',compact('issues', 'person_id'));
     }
 
     public function create($id)  {
@@ -25,6 +26,7 @@ class IssueController extends Controller
       $topic = Input::get('topic');
       $value = Input::get('value');
       $sources = Input::get('source');
+      $source_links = Input::get('source_link');
 
       for($i = 0; $i < count($value); $i++)  {
         $issue = new Issue();
@@ -32,6 +34,7 @@ class IssueController extends Controller
         $issue->topic_id = $topic[$i];
         $issue->value = $value[$i];
         $issue->source = $sources[$i];
+        $issue->source_link = $source_links[$i];
         $issue->save();
       }
       return redirect("/issue/$id");

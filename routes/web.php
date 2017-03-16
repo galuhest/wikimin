@@ -13,6 +13,10 @@
 
 Route::get('/', 'CandidateController@welcome');
 
+Route::get('/admin', function(){
+  return view('admin');
+});
+
 Route::resource('candidate',"CandidateController");
 
 Route::group(['prefix'=>'vision'], function() {
@@ -86,6 +90,7 @@ Route::group(['prefix'=>'award'], function() {
   Route::put('/{id}', 'AwardController@update');
   Route::delete('/{id}', 'AwardController@delete');
 });
+
 Route::group(['prefix'=>'topic'], function() {
   Route::get('/', 'TopicController@index');
   Route::get('/create', 'TopicController@create');
