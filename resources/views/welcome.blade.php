@@ -68,23 +68,47 @@
             @endforelse
         </div>
     </div>
+
+    @php
+        $topics = App\Topic::all();
+    @endphp
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Program</h4>
-            @forelse ($candidates[0]["programs"] as $program)
-                <p>{{ $program->value }}</p>
+            @forelse($topics as $t)
+                @php
+                  $program = App\Program::where("candidate_id", 1)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($program->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($program as $i)
+                        <p>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
             @empty
-                <p>No programs</p>
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
             @endforelse
         </div>
     </div>
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">Program</h4>
-            @forelse ($candidates[1]["programs"] as $program)
-                <p>{{ $program->value }}</p>
+            @forelse($topics as $t)
+                @php
+                  $program = App\Program::where("candidate_id", 1)->where("topic_id", $t->id)->get();
+                @endphp
+                @if($program->count() != 0)
+                    <strong>{{$t->topic}}</strong><br>
+                    @foreach($program as $i)
+                        <p>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
+                        </p>
+                    @endforeach
+                @endif
             @empty
-                <p>No programs</p>
+                Belum ada topik. Tambah dulu sebelum tambah pendapat.
             @endforelse
         </div>
     </div>
@@ -113,9 +137,6 @@
 
 <h2 class="text center" id="pendapat">
     Pendapat
-    @php
-        $topics = App\Topic::all();
-    @endphp
 </h2>
 <div class="row">
     <div class="col-sm-3">
@@ -129,7 +150,7 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
                     @endforeach
                 @endif
@@ -149,7 +170,7 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
                     @endforeach
                 @endif
@@ -169,7 +190,7 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
                     @endforeach
                 @endif
@@ -189,7 +210,7 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{{$i->value}}" ~ <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
                     @endforeach
                 @endif
@@ -208,7 +229,7 @@
     <small>Pengakuan Mereka yang Pernah Berkerja Langsung dengan Kandidat</small>
 </h2>
 <div class="row">
-    
+
     @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
@@ -216,7 +237,7 @@
             @forelse ($person["testimonies"] as $t)
                 <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
                 @if($t->testimony)
-                    <em>"{{$t->testimony}}"</em><br>
+                    <em>"{!!$t->testimony!!}"</em><br>
                 @endif
                 <a href="{{$t->source_link}}">{{$t->source}}</a><br>
             @empty
@@ -225,7 +246,7 @@
         </div>
     </div>
     @endforeach
-    
+
 </div>
 <div class="text center">
     <a href="#atas">kembali ke atas</a>
@@ -314,4 +335,3 @@
 </div>
 
 @endsection
-
