@@ -23,8 +23,10 @@ class CreateAwardsTable extends Migration
               ->onUpdate('cascade')
               ->onDelete('cascade');
             $table->integer('year_given');
-            $table->string('award');
+            $table->text('award');
+            $table->text('institution');
             $table->string('source');
+            $table->text('source_link');
             $table->timestamps();
         });
     }

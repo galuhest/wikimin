@@ -1,6 +1,9 @@
 @extends('template.app')
 
 @section('content')
+<a href='{{url("/education/".$id)}}' class="btn btn-default">Lihat Pendidikan</a>
+<hr>
+<h3>Tambah Pendidikan</h3>
 <form action="{{action('EducationController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-12">
     <div class="col-md-4">
