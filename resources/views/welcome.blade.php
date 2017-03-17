@@ -1,7 +1,15 @@
 @extends('template.app')
 @section('content')
 <h1 class="text center" id="atas">Ahok atau Anies?</h1>
-
+<div class="col-md-4 col-md-offset-4">
+  <div class="owl-carousel owl-theme">
+      <div class="item"><h4>1</h4></div>
+      <div class="item"><h4>2</h4></div>
+      <div class="item"><h4>3</h4></div>
+      <div class="item"><h4>4</h4></div>
+      <div class="item"><h4>5</h4></div>
+  </div>
+</div>
 <div class="row">
     <div class="col-sm-6">
         <div class="couple-avatar-paslon-main">
@@ -366,4 +374,16 @@
     <a href="#atas">kembali ke atas</a>
 </div>
 
+@endsection
+@section('js')
+<script>
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+      loop:true,
+      items:1,
+      nav:true,
+      center:true,
+    });
+  });
+</script>
 @endsection

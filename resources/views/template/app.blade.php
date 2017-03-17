@@ -59,6 +59,8 @@
     <meta property="fb:app_id" content="1412350799013815">
 
     <link rel="stylesheet" href="{{asset('css/app.css', $secure)}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css', $secure)}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css', $secure)}}">
     <style type="text/css">
         body{
             padding-top: 70px;
@@ -112,8 +114,11 @@
             <p class="text-muted">Place sticky footer content here.</p>
           </div>
         </footer>
-
-        <script type="text/javascript" src="{{asset('js/app.js', $secure)}}"></script>
+        <script
+        			  src="https://code.jquery.com/jquery-3.2.0.min.js"
+        			  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+        			  crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{asset('js/owl.carousel.min.js', $secure)}}"></script>
+        @yield('js')
     </body>
-    @yield('js')
 </html>
