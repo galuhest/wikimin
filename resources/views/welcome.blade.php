@@ -57,7 +57,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[0]["visions"] as $vision)
-                <p>{!! $vision->value !!}</p>
+                <p>{!! $vision->value !!} ~ {{$vision->source}}</p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -65,7 +65,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[0]["missions"] as $mission)
-                <p>{!! $mission->value !!}</p>
+                <p>{!! $mission->value !!} ~ {{$vision->source}}</p>
             @empty
                 <p>No missions</p>
             @endforelse
@@ -119,7 +119,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[1]["visions"] as $vision)
-                <p>{!! $vision->value !!}</p>
+                <p>{!! $vision->value !!} ~ {{$vision->source}}</p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -127,7 +127,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[1]["missions"] as $mission)
-                <p>{!! $mission->value !!}</p>
+                <p>{!! $mission->value !!} ~ {{$vision->source}}</p>
             @empty
                 <p>No missions</p>
             @endforelse
