@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css', $secure)}}">
     <style type="text/css">
         body{
-            padding-top: 70px;
+            padding-top: 50px;
         }
     </style>
     </head>
@@ -105,6 +105,22 @@
           </div>
         </nav>
 
+        
+        <div class="owl-carousel owl-theme" >
+              <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">1</div>
+              </div>
+              <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">2</div>
+              </div>
+              <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">3</div>
+              </div>
+              <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">4</div>
+              </div>
+        </div>
+
         <div class="container-fluid">
           @yield('content')
         </div>
@@ -115,10 +131,22 @@
           </div>
         </footer>
         <script
-        			  src="https://code.jquery.com/jquery-3.2.0.min.js"
-        			  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
-        			  crossorigin="anonymous"></script>
+		  src="https://code.jquery.com/jquery-3.2.0.min.js"
+		  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+		  crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{asset('js/owl.carousel.min.js', $secure)}}"></script>
+        <script>
+          $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+              loop:true,
+              items:1,
+              nav:true,
+              center:true,
+            });
+          });
+        </script>
         @yield('js')
     </body>
 </html>

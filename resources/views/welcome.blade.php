@@ -1,24 +1,10 @@
+<?php
+    $secure = App::environment('production') ? true : NULL;
+?>
 @extends('template.app')
 @section('content')
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 <h1 class="text center" id="atas">Ahok atau Anies?</h1>
-<div class="col-md-4 col-md-offset-4">
-  <div class="owl-carousel owl-theme">
-      <div class="item"><h4>1</h4></div>
-      <div class="item"><h4>2</h4></div>
-      <div class="item"><h4>3</h4></div>
-      <div class="item"><h4>4</h4></div>
-      <div class="item"><h4>5</h4></div>
-  </div>
-</div>
 <div class="row">
     <div class="col-sm-6">
         <div class="couple-avatar-paslon-main">
@@ -71,7 +57,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[0]["visions"] as $vision)
-                <p>{{ $vision->value }}</p>
+                <p>{!! $vision->value !!}</p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -79,7 +65,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[0]["missions"] as $mission)
-                <p>{{ $mission->value }}</p>
+                <p>{!! $mission->value !!}</p>
             @empty
                 <p>No missions</p>
             @endforelse
@@ -98,9 +84,9 @@
                 @endphp
                 @if($program->count() != 0)
                     <strong>{{$t->topic}}</strong><br>
-                    @foreach($program as $i)
+                    @foreach($program as $p)
                         <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
                         </p>
                     @endforeach
                 @endif
@@ -114,13 +100,13 @@
             <h4 class="text center">Program</h4>
             @forelse($topics as $t)
                 @php
-                  $program = App\Program::where("candidate_id", 1)->where("topic_id", $t->id)->get();
+                  $program = App\Program::where("candidate_id", 2)->where("topic_id", $t->id)->get();
                 @endphp
                 @if($program->count() != 0)
                     <strong>{{$t->topic}}</strong><br>
-                    @foreach($program as $i)
+                    @foreach($program as $p)
                         <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
+                            {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
                         </p>
                     @endforeach
                 @endif
@@ -133,7 +119,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[1]["visions"] as $vision)
-                <p>{{ $vision->value }}</p>
+                <p>{!! $vision->value !!}</p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -141,13 +127,31 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[1]["missions"] as $mission)
-                <p>{{ $mission->value }}</p>
+                <p>{!! $mission->value !!}</p>
             @empty
                 <p>No missions</p>
             @endforelse
         </div>
     </div>
 </div>
+@php
+    $program = App\Program::all();
+@endphp
+@foreach($program as $p)
+<div class="modal fade" id="programModal{{$p->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="buktiModalLabel">Bukti</h4>
+          </div>
+          <div class="modal-body">
+            {!!$p->source!!}
+          </div>
+        </div>
+    </div>
+</div>
+@endforeach
 <div class="text center">
     <a href="#atas">kembali ke atas</a>
 </div>
@@ -167,9 +171,8 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
-                            <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a><br>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&summary=MySummary&title=MyTitle&description={{$i->value}}"><img width="10px" height="10px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                         </p>
                     @endforeach
                 @endif
@@ -189,9 +192,8 @@
                     <strong>{{$t->topic}}</strong><br>
                     @foreach($issues as $i)
                         <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
-                            <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-
+                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a> 
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendapat Ahok tentang {{$t->topic}}&description=%22{{$i->value}}%22 ~ {{$i->source}}&picture=https://pilkada2017.kpu.go.id/img/paslon//2931/2931_foto-kd_1_.jpg" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                         </p>
                     @endforeach
                 @endif
@@ -212,7 +214,6 @@
                     @foreach($issues as $i)
                         <p>
                             {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
-                            <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
                         </p>
                     @endforeach
                 @endif
@@ -233,7 +234,6 @@
                     @foreach($issues as $i)
                         <p>
                             {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
-                            <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
 
                         </p>
                     @endforeach
@@ -264,7 +264,6 @@
                     <em>"{!!$t->testimony!!}"</em><br>
                 @endif
                 <a href="{{$t->source_link}}">{{$t->source}}</a><br>
-                <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div><br>
 
             @empty
                 <p>No testimonies</p>
@@ -392,16 +391,4 @@
     <a href="#atas">kembali ke atas</a>
 </div>
 
-@endsection
-@section('js')
-<script>
-  $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
-      loop:true,
-      items:1,
-      nav:true,
-      center:true,
-    });
-  });
-</script>
 @endsection

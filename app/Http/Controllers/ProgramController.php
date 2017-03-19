@@ -24,12 +24,14 @@ class ProgramController extends Controller
       $id = Input::get('id');
       $programs = Input::get('program');
       $sources = Input::get('source');
+      $topics = Input::get('topic');
 
       for($i = 0; $i < count($programs); $i++)  {
         $program = new Program();
         $program->candidate_id = $id;
         $program->value = $programs[$i];
         $program->source = $sources[$i];
+        $program->topic_id = $topics[$i];
         $program->save();
       }
       return redirect("/program/$id");

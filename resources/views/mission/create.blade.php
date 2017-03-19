@@ -5,12 +5,12 @@
     <div class="col-md-4">
       <input hidden type="text" value="{{$id}}" name="id">
       <div class="form-group">
-        <div class="form-group">
-          <label>Visi kandidat : </label><input class="form-control" type="text" name="misi[]" placeholder="misi">
-        </div>
-        <div class="form-group">
-          <label> Sumber : </label><input class="form-control" type="text" name="source[]" placeholder="sumber">
-        </div>
+        <label>Misi Kandidat :</label>
+        <textarea class="form-control" name="misi[]" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Sumber :</label>
+        <textarea class="form-control" name="source[]" rows="3"></textarea>
       </div>
     </div>
   </div>

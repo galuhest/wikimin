@@ -14,7 +14,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label> Pendapat : </label> <input type="text" placeholder="Tuliskan kutipan langsung orang tersebut" name="value[]" class="form-control">
+          <label> Pendapat : </label>
+          <textarea class="form-control" name="value[]" rows="5"></textarea>
         </div>
         <div class="form-group">
           <label> URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="URL ke sumber (sudah di-archive.org-kan)">
@@ -46,7 +47,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label> Pendapat : </label> <input type="text" placeholder="Tuliskan kutipan langsung orang tersebut" name="value[]" class="form-control">
+          <label> Pendapat : </label>
+          <textarea class="form-control" name="value[]" rows="5"></textarea>
         </div>
         <div class="form-group">
           <label> URL Sumber : </label><input class="form-control" type="text" name="source_link[]" placeholder="URL ke sumber (sudah di-archive.org-kan)">

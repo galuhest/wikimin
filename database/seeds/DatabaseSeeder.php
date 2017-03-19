@@ -13,19 +13,15 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         DB::table('person')->insert([
-        	'id' => 1,
             'name' => 'Ahok'
         ]);
         DB::table('person')->insert([
-        	'id' => 2,
             'name' => 'Djarot'
         ]);
         DB::table('person')->insert([
-        	'id' => 3,
             'name' => 'Anies'
         ]);
         DB::table('person')->insert([
-        	'id' => 4,
             'name' => 'Sandi'
         ]);
         DB::table('candidates')->insert([
@@ -33,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'head_id' => 1,
             'vice_id' => 2
         ]);
+        
         DB::table('candidates')->insert([
         	'id' => 2,
             'head_id' => 3,
