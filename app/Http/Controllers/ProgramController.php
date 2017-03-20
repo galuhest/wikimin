@@ -13,7 +13,8 @@ class ProgramController extends Controller
     //
     public function index($id) {
       $programs = Candidate::find($id)->programs;
-      return view('program.index',compact('programs'));
+      $candidate_id = $id;
+      return view('program.index',compact('programs', 'candidate_id'));
     }
 
     public function create($id)  {
@@ -25,6 +26,7 @@ class ProgramController extends Controller
       $programs = Input::get('program');
       $sources = Input::get('source');
       $topics = Input::get('topic');
+      $titles = Input::get('title');
 
       for($i = 0; $i < count($programs); $i++)  {
         $program = new Program();
@@ -32,6 +34,7 @@ class ProgramController extends Controller
         $program->value = $programs[$i];
         $program->source = $sources[$i];
         $program->topic_id = $topics[$i];
+        $program->title = $titles[$i];
         $program->save();
       }
       return redirect("/program/$id");

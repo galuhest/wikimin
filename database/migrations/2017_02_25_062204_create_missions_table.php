@@ -22,7 +22,8 @@ class CreateMissionsTable extends Migration
               ->on('candidates')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->string('value',500);
+            $table->text('value');
+            $table->text('source_link');
             $table->string('source');
             $table->timestamps();
         });

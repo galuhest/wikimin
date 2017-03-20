@@ -1,12 +1,9 @@
 @extends('template.app')
 @section('content')
-<strong>Panduan menulis</strong>:
-<p>
-  <code>ini &lt;strong&gt;huruf&lt;/strong&gt; tebal</code> &rarr; ini <strong>huruf</strong> tebal.
-</p>
-<p>
-  <code>ini &lt;a href="http://tes" target="_blank"&gt;link&lt;/b&gt;</code> &rarr; ini <a href="http://tes" target="_blank">link</a></b>.
-</p>
+
+@component('component.petunjuk-tulis-html')
+@endcomponent
+
 <form action="{{action('VisionController@store')}}" method="POST" class="form-horizontal">
   <div class="col-md-12">
     <div class="col-md-4">
@@ -14,8 +11,10 @@
       <div class="form-group">
         <label>Visi kandidat : </label>
         <textarea class="form-control" name="visi[]" rows="5"></textarea>
+        <label>URL Sumber : </label>
+        <textarea class="form-control" name="source_link[]" rows="3" placeholder="Link URL (kalau alamat website, harus di-archive.org-kan dulu)..."></textarea>
         <label>Sumber : </label>
-        <textarea class="form-control" name="source[]" rows="3"></textarea>
+        <input class="form-control" type="text" name="source[]" placeholder="sumber">
       </div>
     </div>
   </div>

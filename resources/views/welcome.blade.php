@@ -57,7 +57,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[0]["visions"] as $vision)
-                <p>{!! $vision->value !!} ~ {!!$vision->source!!}</p>
+                <p>{!! $vision->value !!} ~ <a href="{{$vision->source_link}}">{{$vision->source}}</a></p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -65,7 +65,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[0]["missions"] as $mission)
-                <p>{!! $mission->value !!} ~ {!!$vision->source!!}</p>
+                <p>{!! $mission->value !!} ~ <a href="{{$mission->source_link}}">{{$mission->source}}</a></p>
             @empty
                 <p>No missions</p>
             @endforelse
@@ -83,9 +83,10 @@
                   $program = App\Program::where("candidate_id", 1)->where("topic_id", $t->id)->get();
                 @endphp
                 @if($program->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
+                    <div class="text-center"><em><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p>
+                            <strong>{{$p->title}}</strong><br>
                             {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
                         </p>
                     @endforeach
@@ -103,9 +104,10 @@
                   $program = App\Program::where("candidate_id", 2)->where("topic_id", $t->id)->get();
                 @endphp
                 @if($program->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
+                    <div class="text-center"><strong><em>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p>
+                            <strong>{{$p->title}}</strong><br>
                             {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
                         </p>
                     @endforeach
@@ -119,7 +121,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Visi</h4>
             @forelse ($candidates[1]["visions"] as $vision)
-                <p>{!! $vision->value !!} ~ {!!$vision->source!!}</p>
+                <p>{!! $vision->value !!} ~ <a href="{{$vision->source_link}}">{{$vision->source}}</a></p>
             @empty
                 <p>No visions</p>
             @endforelse
@@ -127,7 +129,7 @@
         <div class="kotak-putih">
             <h4 class="text center">Misi</h4>
             @forelse ($candidates[1]["missions"] as $mission)
-                <p>{!! $mission->value !!} ~ {!!$vision->source!!}</p>
+                <p>{!! $mission->value !!} ~ <a href="{{$mission->source_link}}">{{$mission->source}}</a></p>
             @empty
                 <p>No missions</p>
             @endforelse
@@ -160,81 +162,22 @@
     Pendapat
 </h2>
 <div class="row">
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Djarot</h4>
-            @forelse($topics as $t)
-                @php
-                    $issues = App\Issue::where("person_id", 2)->where("topic_id", $t->id)->get();
-                @endphp
-                @if($issues->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
-                    @foreach($issues as $i)
-                        <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a><br>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&summary=MySummary&title=MyTitle&description={{$i->value}}"><img width="10px" height="10px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
-                        </p>
-                    @endforeach
-                @endif
-            @empty
-                Belum ada topik. Tambah dulu sebelum tambah pendapat.
-            @endforelse
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Ahok</h4>
-            @forelse($topics as $t)
-                @php
-                    $issues = App\Issue::where("person_id", 1)->where("topic_id", $t->id)->get();
-                @endphp
-                @if($issues->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
-                    @foreach($issues as $i)
-                        <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a> 
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendapat Ahok tentang {{$t->topic}}&description=%22{{$i->value}}%22 ~ {{$i->source}}&picture=https://pilkada2017.kpu.go.id/img/paslon//2931/2931_foto-kd_1_.jpg" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
-                        </p>
-                    @endforeach
-                @endif
-            @empty
-                Belum ada topik. Tambah dulu sebelum tambah pendapat.
-            @endforelse
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Anies</h4>
-            @forelse($topics as $t)
-                @php
-                    $issues = App\Issue::where("person_id", 3)->where("topic_id", $t->id)->get();
-                @endphp
-                @if($issues->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
-                    @foreach($issues as $i)
-                        <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
-                        </p>
-                    @endforeach
-                @endif
-            @empty
-                Belum ada topik. Tambah dulu sebelum tambah pendapat.
-            @endforelse
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="kotak-putih">
-            <h4 class="text center">Sandi</h4>
-            @forelse($topics as $t)
-                @php
-                    $issues = App\Issue::where("person_id", 4)->where("topic_id", $t->id)->get();
-                @endphp
-                @if($issues->count() != 0)
-                    <strong>{{$t->topic}}</strong><br>
-                    @foreach($issues as $i)
-                        <p>
-                            {{$loop->iteration}}. "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
 
+    @foreach($persons as $person)
+    <div class="col-sm-3">
+        <div class="kotak-putih">
+            <h4 class="text center">{{$person["name"]}}</h4>
+            @forelse($topics as $t)
+                @php
+                    $issues = App\Issue::where("person_id", $person["id"])->where("topic_id", $t->id)->get();
+                @endphp
+                @if($issues->count() != 0)
+                    <div class="text-center"><strong><em>{{$t->topic}}</strong></em></div>
+                    @foreach($issues as $i)
+                        <p>
+                            <strong>{{$i->summary}}</strong><br>
+                            "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a><br>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$i->summary}}&description={{$i->value}} ~ {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                         </p>
                     @endforeach
                 @endif
@@ -243,7 +186,10 @@
             @endforelse
         </div>
     </div>
+    @endforeach
+
 </div>
+
 <div class="text center">
     <a href="#atas">kembali ke atas</a>
 </div>
@@ -264,7 +210,6 @@
                     <em>"{!!$t->testimony!!}"</em><br>
                 @endif
                 <a href="{{$t->source_link}}">{{$t->source}}</a><br>
-
             @empty
                 <p>No testimonies</p>
             @endforelse
@@ -288,7 +233,7 @@
             @forelse ($person["educations"] as $education)
                 <p>
                     <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#eduModal{{$education->id}}" aria-hidden="true" style="cursor: target;"></span>
-                    <b>{{$education->year_start}}-{{$education->year_end}}</b><br>
+                    <b>{{$education->year_start}} @if($education->year_start && $education->year_end)-@endif {{$education->year_end}} @if(!$education->year_start) (lulus) @endif</b><br>
                     {{$education->institution}} {{isset($education->degree) ? '&mdash; ('.$education->degree.')' : ''}}
                 </p>
             @empty
@@ -335,7 +280,7 @@
             @forelse ($person["careers"] as $c)
                 <p>
                     <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#careerModal{{$c->id}}" aria-hidden="true" style="cursor: target;"></span>
-                    <b>{{$c->year_start}}-{{$c->year_end}}</b><br>
+                    <b>{{$c->year_start}} @if(!$c->year_end)(mulai)@endif @if($c->year_start && $c->year_end)-@endif {{$c->year_end}} @if(!$c->year_start)(selesai)@endif</b><br>
                     {{$c->position}}, {{$c->institution}}
                 </p>
             @empty

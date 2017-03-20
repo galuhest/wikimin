@@ -22,7 +22,8 @@ class CreateProgramsTable extends Migration
               ->on('candidates')
               ->onUpdate('cascade')
               ->onDelete('cascade');
-            $table->string('value',500);
+            $table->string('title');
+            $table->text('value');
             $table->string('source');
             $table->timestamps();
         });

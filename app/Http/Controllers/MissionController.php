@@ -24,12 +24,14 @@ class MissionController extends Controller
       $id = Input::get('id');
       $missions = Input::get('misi');
       $sources = Input::get('source');
+      $source_links = Input::get('source_link');
 
       for($i = 0; $i < count($missions); $i++)  {
         $mission = new Mission();
         $mission->candidate_id = $id;
         $mission->value = $missions[$i];
         $mission->source = $sources[$i];
+        $mission->source_link = $source_links[$i];
         $mission->save();
       }
       return redirect("/mission/$id");

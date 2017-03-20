@@ -27,6 +27,7 @@ class IssueController extends Controller
       $value = Input::get('value');
       $sources = Input::get('source');
       $source_links = Input::get('source_link');
+      $summaries = Input::get('summary');
 
       for($i = 0; $i < count($value); $i++)  {
         $issue = new Issue();
@@ -35,6 +36,7 @@ class IssueController extends Controller
         $issue->value = $value[$i];
         $issue->source = $sources[$i];
         $issue->source_link = $source_links[$i];
+        $issue->summary = $summaries[$i];
         $issue->save();
       }
       return redirect("/issue/$id");

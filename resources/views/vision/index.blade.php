@@ -1,10 +1,11 @@
 @extends('template.app')
 @section('content')
+
 @foreach($visions as $vision)
   <div class="col-md-4">
     <h3>{{$vision->id}}</h3>
     <p>visi : {{$vision->value}} </p>
-    <p>sumber : {{$vision->source}} </p>
+    <p>sumber : <a href="{{$vision->source_link}}">{{$vision->source}}</a> </p>
     <a href='{{url("/vision/$vision->id/edit")}}' class="btn btn-default">Edit</a>
     <form method="POST" action='{{url("/vision/$vision->id")}}'>
       <button type="submit" class="btn btn-default">Delete</button>

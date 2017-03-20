@@ -16,7 +16,7 @@ class CreateTopicColumnInProgram extends Migration
         //
         Schema::enableForeignKeyConstraints();
         Schema::table('programs', function (Blueprint $table) {
-          $table->integer('topic_id')->unsigned();
+          $table->integer('topic_id')->unsigned()->after('candidate_id');
           $table->foreign('topic_id')->references('id')
             ->on('topics')
             ->onUpdate('cascade')

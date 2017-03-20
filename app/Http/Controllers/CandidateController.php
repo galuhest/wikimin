@@ -38,24 +38,28 @@ class CandidateController extends Controller
         //constructing persons array
         $djarotq = Person::where('name', '=', 'Djarot')->first();
             $djarot["name"] = $djarotq->name;
+            $djarot["id"] = $djarotq->id;
             $djarot["testimonies"] = Testimony::where('person_id','=',$djarotq->id)->get();
             $djarot["educations"] = Education::where('person_id','=',$djarotq->id)->get();
             $djarot["careers"] = Career::where('person_id','=',$djarotq->id)->get();
             $djarot["awards"] = Award::where('person_id','=',$djarotq->id)->get();
         $ahokq = Person::where('name', '=', 'Ahok')->first();
             $ahok["name"] = $ahokq->name;
+            $ahok["id"] = $ahokq->id;
             $ahok["testimonies"] = Testimony::where('person_id','=',$ahokq->id)->get();
             $ahok["educations"] = Education::where('person_id','=',$ahokq->id)->get();
             $ahok["careers"] = Career::where('person_id','=',$ahokq->id)->get();
             $ahok["awards"] = Award::where('person_id','=',$ahokq->id)->get();
         $aniesq = Person::where('name', '=', 'Anies')->first();
             $anies["name"] = $aniesq->name;
+            $anies["id"] = $aniesq->id;
             $anies["testimonies"] = Testimony::where('person_id','=',$aniesq->id)->get();
             $anies["educations"] = Education::where('person_id','=',$aniesq->id)->get();
             $anies["careers"] = Career::where('person_id','=',$aniesq->id)->get();
             $anies["awards"] = Award::where('person_id','=',$aniesq->id)->get();
         $sandiq = Person::where('name', '=', 'Sandi')->first();
             $sandi["name"] = $sandiq->name;
+            $sandi["id"] = $sandiq->id;
             $sandi["testimonies"] = Testimony::where('person_id','=',$sandiq->id)->get();
             $sandi["educations"] = Education::where('person_id','=',$sandiq->id)->get();
             $sandi["careers"] = Career::where('person_id','=',$sandiq->id)->get();

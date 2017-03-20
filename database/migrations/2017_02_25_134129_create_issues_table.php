@@ -27,6 +27,7 @@ class CreateIssuesTable extends Migration
               ->on('person')
               ->onUpdate('cascade')
               ->onDelete('cascade');
+            $table->string('summary')->nullable();
             $table->text('value');
             $table->text('source_link');
             $table->string('source');
