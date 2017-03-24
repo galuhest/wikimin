@@ -47,6 +47,7 @@ Route::group(['prefix'=>'mission'], function() {
 });
 
 Route::group(['prefix'=>'education'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'EducationController@index');
   Route::get('/{id}/create', 'EducationController@create');
   Route::post('/', 'EducationController@store');
@@ -56,6 +57,7 @@ Route::group(['prefix'=>'education'], function() {
 });
 
 Route::group(['prefix'=>'testimony'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'TestimonyController@index');
   Route::get('/{id}/create', 'TestimonyController@create');
   Route::post('/', 'TestimonyController@store');
@@ -65,6 +67,7 @@ Route::group(['prefix'=>'testimony'], function() {
 });
 
 Route::group(['prefix'=>'career'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'CareerController@index');
   Route::get('/{id}/create', 'CareerController@create');
   Route::post('/', 'CareerController@store');
@@ -74,6 +77,7 @@ Route::group(['prefix'=>'career'], function() {
 });
 
 Route::group(['prefix'=>'issue'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'IssueController@index');
   Route::get('/{id}/create', 'IssueController@create');
   Route::post('/', 'IssueController@store');
@@ -83,6 +87,7 @@ Route::group(['prefix'=>'issue'], function() {
 });
 
 Route::group(['prefix'=>'award'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'AwardController@index');
   Route::get('/{id}/create', 'AwardController@create');
   Route::post('/', 'AwardController@store');

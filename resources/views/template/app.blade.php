@@ -105,7 +105,7 @@
           </div>
         </nav>
 
-        
+        @if(Request::path() == "/")
         <div class="owl-carousel owl-theme" >
               <div class="item">
                 <div style="width: 1280px; height: 230px; background-color: pink;">1</div>
@@ -120,6 +120,7 @@
                 <div style="width: 1280px; height: 230px; background-color: pink;">4</div>
               </div>
         </div>
+        @endif
 
         <div class="container-fluid">
           @yield('content')

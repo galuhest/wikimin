@@ -9,20 +9,20 @@
     <div class="col-sm-6">
         <div class="couple-avatar-paslon-main">
             <div class="avatar">
-              <img src="https://pilkada2017.kpu.go.id/img/paslon//2931/2931_foto-wkd_1_.jpg" alt="Foto Jarot">
+              <img src="{{asset('images/Djarot.jpg', $secure)}}" alt="Foto Jarot">
             </div>
             <div class="avatar" style="z-index: 3;">
-              <img src="https://pilkada2017.kpu.go.id/img/paslon//2931/2931_foto-kd_1_.jpg" alt="Foto Ahok">
+              <img src="{{asset('images/Ahok.jpg', $secure)}}" alt="Foto Ahok">
             </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="couple-avatar-paslon-main">
             <div class="avatar">
-              <img src="https://pilkada2017.kpu.go.id/img/paslon//3203/3203_foto-kd_1_.jpg" alt="Foto Anies">
+              <img src="{{asset('images/Anies.jpg', $secure)}}" alt="Foto Anies">
             </div>
             <div class="avatar">
-              <img src="https://pilkada2017.kpu.go.id/img/paslon//3203/3203_foto-wkd_1_.jpg" alt="Foto Sandi">
+              <img src="{{asset('images/Sandi.jpg', $secure)}}" alt="Foto Sandi">
             </div>
         </div>
     </div>
@@ -175,9 +175,9 @@
                     <div class="text-center"><strong><em>{{$t->topic}}</strong></em></div>
                     @foreach($issues as $i)
                         <p>
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <strong>{{$i->summary}}</strong><br>
-                            "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a><br>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$i->summary}}&description={{$i->value}} ~ {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
                     @endforeach
                 @endif

@@ -77,9 +77,15 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
         $candidates = Candidate::get();
         return view('candidate.index', compact('candidates'));
+    }
+
+    public function submit(Request $request)
+    {
+        $type = $request->segment(1);
+        $person = Person::find($request->segment(2));
+        return view('submission', compact('person', 'type'));
     }
 
     /**
@@ -89,7 +95,6 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        //
         return view('candidate.create');
     }
 
