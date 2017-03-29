@@ -29,6 +29,7 @@ Route::group(['prefix'=>'vision'], function() {
 });
 
 Route::group(['prefix'=>'program'], function() {
+  Route::get('/{id}/kontribusi-data', 'CandidateController@submit');
   Route::get('/{id}', 'ProgramController@index');
   Route::get('/{id}/create', 'ProgramController@create');
   Route::post('/', 'ProgramController@store');

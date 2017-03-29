@@ -66,6 +66,7 @@
             padding-top: 50px;
         }
     </style>
+    @yield('head')
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">

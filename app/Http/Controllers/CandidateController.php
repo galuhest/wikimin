@@ -84,7 +84,15 @@ class CandidateController extends Controller
     public function submit(Request $request)
     {
         $type = $request->segment(1);
-        $person = Person::find($request->segment(2));
+        if($type == "program"){
+            if($request->segment(2) == 1){
+                $person = "Ahok-Djarot";
+            }else{
+                $person = "Anies-Sandi";
+            }
+        }else{
+            $person = Person::find($request->segment(2))->name;
+        }
         return view('submission', compact('person', 'type'));
     }
 

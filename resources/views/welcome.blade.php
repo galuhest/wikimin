@@ -2,6 +2,21 @@
     $secure = App::environment('production') ? true : NULL;
 ?>
 @extends('template.app')
+
+@section('head')
+    <style type="text/css">
+        img[data-toggle="modal"]{
+            margin-top: 5px;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        .btn-primary.btn-small{
+            margin-top: 0px;
+        }
+
+    </style>
+@endsection
+
 @section('content')
 
 <h1 class="text center" id="atas">Ahok atau Anies?</h1>
@@ -83,17 +98,22 @@
                   $program = App\Program::where("candidate_id", 1)->where("topic_id", $t->id)->get();
                 @endphp
                 @if($program->count() != 0)
-                    <div class="text-center"><em><strong>{{$t->topic}}</strong></em></div>
+                    <div class="text-center"><em style="color:#e85454;"><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p>
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
-                            {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
+                            {!!$p->value!!}
                         </p>
                     @endforeach
                 @endif
             @empty
                 Belum ada topik. Tambah dulu sebelum tambah pendapat.
             @endforelse
+            <div class="text-center">
+                <a href="{{url('program/1/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Program Ahok-Djarot</a>
+            </div>
         </div>
     </div>
     <div class="col-sm-3">
@@ -104,17 +124,22 @@
                   $program = App\Program::where("candidate_id", 2)->where("topic_id", $t->id)->get();
                 @endphp
                 @if($program->count() != 0)
-                    <div class="text-center"><strong><em>{{$t->topic}}</strong></em></div>
+                    <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p>
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
-                            {!!$p->value!!} <span class="glyphicon glyphicon-book" data-toggle="modal" data-target="#programModal{{$p->id}}" aria-hidden="true" style="cursor: target;"></span>
+                            {!!$p->value!!}
                         </p>
                     @endforeach
                 @endif
             @empty
                 Belum ada topik. Tambah dulu sebelum tambah pendapat.
             @endforelse
+            <div class="text-center">
+                <a href="{{url('program/2/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Program Anies-Sandi</a>
+            </div>
         </div>
     </div>
     <div class="col-sm-3">
@@ -172,7 +197,7 @@
                     $issues = App\Issue::where("person_id", $person["id"])->where("topic_id", $t->id)->get();
                 @endphp
                 @if($issues->count() != 0)
-                    <div class="text-center"><strong><em>{{$t->topic}}</strong></em></div>
+                    <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($issues as $i)
                         <p>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
@@ -184,6 +209,9 @@
             @empty
                 Belum ada topik. Tambah dulu sebelum tambah pendapat.
             @endforelse
+            <div class="text-center">
+                <a href="{{url('issue/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Pendapat {{$person["name"]}}</a>
+            </div>
         </div>
     </div>
     @endforeach
@@ -205,14 +233,20 @@
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["testimonies"] as $t)
-                <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
-                @if($t->testimony)
-                    <em>"{!!$t->testimony!!}"</em><br>
-                @endif
-                <a href="{{$t->source_link}}">{{$t->source}}</a><br>
+                <p>
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendapat {{$t->voucher}} tentang {{$person["name"]}}&description=%22{{$t->testimony}}%22&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                    <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
+                    @if($t->testimony)
+                        <em>"{!!$t->testimony!!}"</em><br>
+                    @endif
+                    <a href="{{$t->source_link}}">{{$t->source}}</a>
+                </p>
             @empty
                 <p>No testimonies</p>
             @endforelse
+            <div class="text-center">
+                <a href="{{url('testimony/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Testimoni {{$person["name"]}}</a>
+            </div>
         </div>
     </div>
     @endforeach
@@ -230,18 +264,18 @@
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
-            @forelse ($person["educations"] as $education)
+            @forelse ($person["educations"] as $e)
                 <p>
-                    <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#eduModal{{$education->id}}" aria-hidden="true" style="cursor: target;"></span>
-                    <b>{{$education->year_start}} @if($education->year_start && $education->year_end)-@endif {{$education->year_end}} @if(!$education->year_start) (lulus) @endif</b><br>
-                    {{$education->institution}} {{isset($education->degree) ? '&mdash; ('.$education->degree.')' : ''}}
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendidikan {{$person["name"]}}&description={{$e->institution}}, {{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                    <img class="pull-right" data-toggle="modal" data-target="#eduModal{{$e->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
+                    <b>{{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif</b><br>
+                    {{$e->institution}} {{isset($e->degree) ? '&mdash; ('.$e->degree.')' : ''}}
                 </p>
             @empty
                 <p>No educations</p>
             @endforelse
-            <hr>
-            <div class="text center">
-                <a href="#">Tambah/Koreksi Informasi Pendidikan Djarot?</a>
+            <div class="text-center">
+                <a href="{{url('education/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Pendidikan {{$person["name"]}}</a>
             </div>
         </div>
     </div>
@@ -270,7 +304,7 @@
 @endforeach
 
 <h2 class="text center" id="karir">
-    Karir
+    Karir &amp; Organisasi
 </h2>
 <div class="row">
     @foreach($persons as $person)
@@ -279,13 +313,17 @@
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["careers"] as $c)
                 <p>
-                    <span class="glyphicon glyphicon-book pull-right" data-toggle="modal" data-target="#careerModal{{$c->id}}" aria-hidden="true" style="cursor: target;"></span>
-                    <b>{{$c->year_start}} @if(!$c->year_end)(mulai)@endif @if($c->year_start && $c->year_end)-@endif {{$c->year_end}} @if(!$c->year_start)(selesai)@endif</b><br>
-                    {{$c->position}}, {{$c->institution}}
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Karir {{$person["name"]}}&description={{$c->institution}}, {{$c->year_start}} @if(!$c->year_end)(mulai)@endif @if($c->year_start && $c->year_end)-@endif {{$c->year_end}} @if(!$c->year_start)(selesai)@endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                    <img class="pull-right" data-toggle="modal" data-target="#careerModal{{$c->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
+                    <b>{{$c->year_start}} @if($c->year_start && $c->year_end)-@endif {{$c->year_end}}</b><br>
+                    {{$c->position}}@if($c->position), @endif{{$c->institution}}
                 </p>
             @empty
                 <p>No educations</p>
             @endforelse
+            <div class="text-center">
+                <a href="{{url('career/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Karir {{$person["name"]}}</a>
+            </div>
         </div>
     </div>
     @endforeach
@@ -322,12 +360,16 @@
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["awards"] as $a)
                 <p>
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Penghargaan {{$person["name"]}}&description={{$a->award}} tahun {{$a->year_given}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <b>{{$a->year_given}}</b><br>
-                    {{$a->award}}, <a href="{{$a->source_link}}">{{$a->source}}</a>
+                    {{$a->award}}, dari {{$a->institution}}<br><a href="{{$a->source_link}}">{{$a->source}}</a>
                 </p>
             @empty
                 <p>No awards</p>
             @endforelse
+            <div class="text-center">
+                <a href="{{url('award/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Penghargaan {{$person["name"]}}</a>
+            </div>
         </div>
     </div>
     @endforeach

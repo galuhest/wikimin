@@ -21,25 +21,49 @@
         $type = "Karir";
     elseif($type == "award")
         $type = "Penghargaan";
+    elseif($type == "program")
+        $type = "Program";
 ?>
 
-<h1 class="text center" id="atas">Bantu Lengkapi Data {{$type}} {{$person->name}}</h1>
+<h1 class="text center" id="atas">Bantu Lengkapi Data {{$type}} {{$person}}</h1>
 
-<div class="text-center" >
 
-    <div>
+
+    <div style="max-width: 400px; text-align: left; margin:0 auto; ">
+        <strong>Panduan Umum:</strong><br>
+        <ol>
+            <li>Bukti sahih adalah wajib</li>
+            <li>Bukti berbentuk publikasi media massa diterima&mdash;tapi hanya yang memiliki identitas dan kontak redaksi yang jelas</li>
+        </ol>
         @if($type == "Pendidikan")
-            tes 
+            <strong>Panduan Khusus Data Pendidikan:</strong>
+            <ol>
+                <li></li>
+            </ol>
         @elseif($type == "Testimoni")
-            tes 2
+            <strong>Panduan Khusus Data Testimoni:</strong>
+            <ol>
+                <li></li>
+            </ol>
         @elseif($type == "Pendapat")
-            tes 3
+            <strong>Panduan Khusus Data Pendapat:</strong>
+            <ol>
+                <li></li>
+            </ol>
         @elseif($type == "Karir")
-            tes 4
+            <strong>Panduan Khusus Data Karir &amp; Organisasi:</strong>
+            <ol>
+                <li></li>
+            </ol>
         @elseif($type == "Penghargaan")
-            tes 5
+            <strong>Panduan Khusus Data Penghargaan:</strong>
+            <ol>
+                <li></li>
+            </ol>
         @endif
+        </ol>
     </div>
+<div class="text-center">
     <div class="fb-comments" data-href="{{Request::fullUrl()}}" data-width="550" data-numposts="7"></div>
 </div>
 
