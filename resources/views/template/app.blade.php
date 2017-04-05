@@ -65,6 +65,24 @@
         body{
             padding-top: 50px;
         }
+        /*no collapse*/
+
+        .navbar-collapse.collapse.off {
+            display: block!important;
+        }
+        .navbar-collapse.collapse.off ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-nav.no-collapse>li,
+        .navbar-nav.no-collapse {
+            float: left !important;
+        }
+
+        .navbar-right.no-collapse {
+            float: right!important;
+        }
     </style>
     @yield('head')
     </head>
@@ -73,33 +91,43 @@
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
               <a class="navbar-brand" href="{{url('/')}}">
                 <img alt="Brand" src="https://wikikandidat.com/img/logo.png">
               </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse off" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav no-collapse">
                 <li>
-                    <a href="https://medium.com/indonesia-raya/golput-bukan-solusi-argumen-singkat-be2b8046d26c#.76lijp679" target="_blank">Golput Bukan Solusi: Argumen Singkat</a>
+                    <p class="navbar-text">
+                        Hasil Kolaborasi dari ->
+                    </p>
                 </li>
                 <li>
-                    <a href="http://wikikandidat.tumblr.com/post/157096787108/kontributor-versi-pilkada-2017" target="_blank">Kontributor</a>
+                    <p class="navbar-text">
+                        <a href="https://www.instagram.com/sks_ui/" target="_blank">SKS UI</a>
+                    </p>
+                </li>
+                <li>
+                    <p class="navbar-text">
+                        <a href="http://ristek.cs.ui.ac.id/" target="_blank">Ristek FASILKOM UI</a>
+                    </p>
                 </li>
                 <li>
                     <p class="navbar-text">Suka? Sebarkan! -> </p>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank">Facebook</a>
+                    <p class="navbar-text">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank">    Facebook
+                        </a>
+                    </p>
                 </li>
                 <li>
-                    <a href="https://twitter.com/intent/tweet?text={{url()->current()}}" target="_blank">Twitter</a>
+                    <p class="navbar-text">
+                        <a href="https://twitter.com/intent/tweet?text={{url()->current()}}" target="_blank">
+                            Twitter
+                        </a>
+                    </p>
                 </li>
               </ul>
             </div>
@@ -108,18 +136,18 @@
 
         @if(Request::path() == "/")
         <div class="owl-carousel owl-theme" >
-              <div class="item">
-                <div style="width: 1280px; height: 230px; background-color: pink;">1</div>
-              </div>
-              <div class="item">
-                <div style="width: 1280px; height: 230px; background-color: pink;">2</div>
-              </div>
-              <div class="item">
-                <div style="width: 1280px; height: 230px; background-color: pink;">3</div>
-              </div>
-              <div class="item">
-                <div style="width: 1280px; height: 230px; background-color: pink;">4</div>
-              </div>
+            <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 1</div>
+            </div>
+            <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 2</div>
+            </div>
+            <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 3</div>
+            </div>
+            <div class="item">
+                <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 4</div>
+            </div>
         </div>
         @endif
 
