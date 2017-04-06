@@ -5,19 +5,60 @@
 
 @section('head')
     <style type="text/css">
-        img[data-toggle="modal"]{
+        img[data-toggle="modal"] {
             margin-top: 5px;
             margin-right: 3px;
             cursor: pointer;
         }
-        .btn-primary.btn-small{
+        .btn-primary.btn-small {
             margin-top: 0px;
         }
-
+        .navbar-brand {
+            padding: 0 15px;
+            padding-top: 8px;
+        }
+        @media (min-width: 768px){
+            .modal-dialog {
+                width: 90%;
+            }
+        }
     </style>
 @endsection
 
+@section('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+        if(isMobile) {
+            $("#mobileModal").modal('show');
+            $("#mobileModal").click(function(){
+                $(this).modal('hide');
+            });
+        }
+    });
+</script>
+@endsection
+
 @section('content')
+
+<div id="mobileModal" class="modal fade " tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Petunjuk</h4>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Oke Kaka! :)</button>
+        <h2>Baca di HP ? Jangan Lupa Zoom ya...</h2>
+        <img src="{{asset('images/zoom-demo.gif', $secure)}}" width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Oke Kaka! :)</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <h1 class="text center" id="atas">Ahok atau Anies?</h1>
 <div class="row">
@@ -245,7 +286,7 @@
                 <p>No testimonies</p>
             @endforelse
             <div class="text-center">
-                <a href="{{url('testimony/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Testimoni {{$person["name"]}}</a>
+                <a href="{{url('tedit.blaestimony/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Testimoni {{$person["name"]}}</a>
             </div>
         </div>
     </div>
