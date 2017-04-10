@@ -46,12 +46,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Petunjuk</h4>
       </div>
       <div class="modal-body">
         <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Oke Kaka! :)</button>
         <h2>Baca di HP ? Jangan Lupa Zoom ya...</h2>
         <img src="{{asset('images/zoom-demo.gif', $secure)}}" width="100%">
+        <h2>Sentuh Apapun untuk Menutup Panduan Ini...</h2>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Oke Kaka! :)</button>
