@@ -45,8 +45,14 @@ class ProgramController extends Controller
       return view('program.edit',compact('program'));
     }
 
-    public function update(Request $request, $id) {
-
+    public function update(Request $request) {
+      $program = Program::find(Input::get('program_id'));
+      $program->value = Input::get('value');
+      $program->source = Input::get('source');
+      $program->topic_id = Input::get('topic_id');
+      $program->title = Input::get('title');
+      $program->save();
+      return redirect("/program/".$program->candidate_id); 
     }
 
     public function delete($id) {

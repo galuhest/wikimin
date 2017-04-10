@@ -7,9 +7,9 @@
   <div class="col-md-4 kotak-putih">
     <h3>{{$program->id}}</h3>
     <p>Topik : {{App\Topic::find($program->topic_id)->topic}} </p>
-    <strong>{{$program->title}}</strong>
-    <p>Deskripsi : {{$program->value}} </p>
-    <p>Sumber : {!!$program->source!!} </p>
+    Judul : <strong>{{$program->title}}</strong>
+    <p>Deskripsi : <br>{!!$program->value!!} </p>
+    <p>Sumber : <br>{!!$program->source!!} </p>
     <a href='{{url("/program/$program->id/edit")}}' class="btn btn-primary btn-sm">Edit</a>
     <form method="POST" action='{{url("/program/$program->id")}}'>
       <button type="submit" class="btn btn-primary btn-sm">Delete</button>

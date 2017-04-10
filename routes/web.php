@@ -34,7 +34,7 @@ Route::group(['prefix'=>'program'], function() {
   Route::get('/{id}/create', 'ProgramController@create');
   Route::post('/', 'ProgramController@store');
   Route::get('/{id}/edit', 'ProgramController@edit');
-  Route::put('/{id}', 'ProgramController@update');
+  Route::post('/{id}/edit', 'ProgramController@update');
   Route::delete('/{id}', 'ProgramController@delete');
 });
 

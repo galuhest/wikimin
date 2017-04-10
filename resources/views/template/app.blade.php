@@ -83,6 +83,9 @@
         .navbar-right.no-collapse {
             float: right!important;
         }
+        .form-horizontal .form-group {
+            margin-left: 0px;
+        }
     </style>
     @yield('head')
     </head>
@@ -92,7 +95,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <a class="navbar-brand" href="{{url('/')}}">
-                <img alt="Brand" src="https://wikikandidat.com/img/logo.png">
+                <img alt="Brand" src="http://wikikandidat.com/img/logo.png">
               </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,7 +103,7 @@
               <ul class="nav navbar-nav no-collapse">
                 <li>
                     <p class="navbar-text">
-                        Hasil Kolaborasi dari ->
+                        Hasil Kolaborasi dari -> 
                     </p>
                 </li>
                 <li>
@@ -135,9 +138,12 @@
         </nav>
 
         @if(Request::path() == "/")
-        <div class="owl-carousel owl-theme" >
+            <img src="{{asset("images/banner-1.jpg", $secure)}}" alt="" width="100%">
+<!--        <div class="owl-carousel owl-theme" >
             <div class="item">
-                <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 1</div>
+                <div style="width: 1280px; height: 230px; background-color: pink;">
+                    
+                </div>
             </div>
             <div class="item">
                 <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 2</div>
@@ -149,6 +155,7 @@
                 <div style="width: 1280px; height: 230px; background-color: pink;">slide nomor 4</div>
             </div>
         </div>
+-->
         @endif
 
         <div class="container-fluid">

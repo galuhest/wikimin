@@ -17,7 +17,7 @@
             padding: 0 15px;
             padding-top: 8px;
         }
-        @media (min-width: 768px){
+        @media (max-width: 768px){
             .modal-dialog {
                 width: 90%;
             }

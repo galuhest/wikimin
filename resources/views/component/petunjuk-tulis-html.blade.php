@@ -7,14 +7,14 @@
 </p>
 <p>
   <code>
-	  &lt;ul&gt;
-	  	&lt;li&gt;
-	  		poin 1
-	  	&lt;/li&gt;
-	  	&lt;li&gt;
-	  		poin 2
-	  	&lt;/li&gt;
-	  &lt;/ul&gt;
+&lt;ul&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;poin 1<br>
+&nbsp;&nbsp;&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;poin 2<br>
+&nbsp;&nbsp;&lt;/li&gt;<br>
+&lt;/ul&gt;<br>
   </code>
   &rarr;
   	<ul>
