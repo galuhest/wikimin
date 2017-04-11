@@ -14,7 +14,7 @@
             <label>Topik : </label>
             <select name="topic_id" class="form-control">
               @foreach(\App\Topic::get() as $topic)
-                <option value="{{$topic->id}}" class="form-control">{{$topic->topic}}</option>
+                <option value="{{$topic->id}}" @if($program->topic_id == $topic->id) selected="selected" @endif class="form-control">{{$topic->topic}}</option>
               @endforeach
             </select>
           </div>
