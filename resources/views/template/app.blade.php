@@ -138,7 +138,9 @@
         </nav>
 
         @if(Request::path() == "/")
-            <img src="{{asset("images/banner-1.jpg", $secure)}}" alt="" width="100%">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeboNYyqt4ZK-h8K3ra3JkRxhhJ4_CxcPJ_SqfVPvjad04Duw/viewform?usp=sf_link" target="_blank">
+                <img src="{{asset("images/banner-1.jpg", $secure)}}" alt="" width="100%">
+            </a>
 <!--        <div class="owl-carousel owl-theme" >
             <div class="item">
                 <div style="width: 1280px; height: 230px; background-color: pink;">
