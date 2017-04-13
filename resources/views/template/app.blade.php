@@ -95,7 +95,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <a class="navbar-brand" href="{{url('/')}}">
-                <img alt="Brand" src="http://wikikandidat.com/img/logo.png">
+                <img alt="Brand" src="{{asset("images/logo.png", $secure)}}">
               </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
