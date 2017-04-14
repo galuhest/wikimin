@@ -29,6 +29,7 @@
 @endsection
 
 @section('js')
+<script type="text/javascript" src="{{asset('js/smooth-scroll.min.js', $secure)}}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
@@ -38,12 +39,12 @@
                 $(this).modal('hide');
             });
         }
+        smoothScroll.init();
     });
 </script>
 @endsection
 
 @section('content')
-
 <div id="mobileModal" class="modal fade " tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -88,22 +89,22 @@
 </div>
 
 <div class="text center">
-    <a href="#visi-misi-program" class="btn btn-primary">
+    <a data-scroll href="#visi-misi-program" class="btn btn-primary">
       Visi, Misi, Program
     </a>
-    <a href="#pendapat" class="btn btn-primary">
+    <a data-scroll href="#pendapat" class="btn btn-primary">
       Pendapat
     </a>
-    <a href="#testimoni" class="btn btn-primary">
+    <a data-scroll href="#testimoni" class="btn btn-primary">
       Testimoni
     </a>
-    <a href="#pendidikan" class="btn btn-primary">
+    <a data-scroll href="#pendidikan" class="btn btn-primary">
       Pendidikan
     </a>
-    <a href="#karir" class="btn btn-primary">
+    <a data-scroll href="#karir" class="btn btn-primary">
       Karir
     </a>
-    <a href="#penghargaan" class="btn btn-primary">
+    <a data-scroll href="#penghargaan" class="btn btn-primary">
       Penghargaan
     </a>
 </div>
@@ -145,9 +146,11 @@
                     <div class="text-center"><em style="color:#e85454;"><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p id="program{{$p->id}}">
+                            <a class="pull-right" href="whatsapp://send?text={{$p->title}} - {{$p->value}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
-                            <strong>{{$p->title}}</strong><br>
+                            <strong>{{$p->title}}</strong>
+                            <br>
                             {!!$p->value!!}
                         </p>
                     @endforeach
@@ -290,7 +293,7 @@
     @endforeach
 </div>
 
-<h2 class="text center" id="testimoni">
+<h2 class="text center" id="pendidikan">
     Pendidikan
 </h2>
 @component('component.tombol-atas-survey')
