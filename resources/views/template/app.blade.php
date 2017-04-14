@@ -63,7 +63,6 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css', $secure)}}">
     <style type="text/css">
         body{
-            padding-top: 50px;
         }
         /*no collapse*/
 
@@ -83,14 +82,20 @@
         .navbar-right.no-collapse {
             float: right!important;
         }
+        .navbar{
+            margin-bottom: 0px;
+        }
         .form-horizontal .form-group {
             margin-left: 0px;
+        }
+        .btn{
+            white-space: normal;
         }
     </style>
     @yield('head')
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -164,11 +169,6 @@
           @yield('content')
         </div>
 
-        <footer class="footer">
-          <div class="container-fluid">
-            <p class="text-muted">Place sticky footer content here.</p>
-          </div>
-        </footer>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -177,7 +177,6 @@
 
           ga('create', 'UA-8256551-6', 'auto');
           ga('send', 'pageview');
-
         </script>
         <script
 		  src="https://code.jquery.com/jquery-3.2.0.min.js"

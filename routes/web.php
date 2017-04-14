@@ -13,7 +13,7 @@
 
 Route::get('/', 'CandidateController@welcome');
 
-Route::get('/admin', function(){
+Route::get('/jusjerukesdikit', function(){
   return view('admin');
 });
 
