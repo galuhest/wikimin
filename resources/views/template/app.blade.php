@@ -13,7 +13,7 @@
     <title>Wikikandidat</title>
 
     <meta name="og:description" content="'Wikipedia' spesialis pemilu yang independen. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
-    <meta name="twitter:description" content="Wikipedia' spesialis pemilu yang independen. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
+    <meta name="twitter:description" content="'Wikipedia' spesialis pemilu yang independen . Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
 
     <!--<meta name="keywords" content="#" />
     <meta name="url" content="#" />
