@@ -146,7 +146,7 @@
                     <div class="text-center"><em style="color:#e85454;"><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p id="program{{$p->id}}">
-                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A *Program Ahok-Djarot: '.$p->title.'* %0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A*Program Ahok-Djarot: '.$p->title.'*%0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong>
@@ -174,6 +174,7 @@
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p id="program{{$p->id}}">
+                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A*Program Anies-Sandi: '.$p->title.'*%0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
@@ -245,6 +246,7 @@
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($issues as $i)
                         <p id="pendapat{{$i->id}}">
+                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#pendapat'.$i->id.'%0A*Pendapat '.$person["name"].': '.$i->summary.'*%0A"...'.strip_tags($p->value).'..."')!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#pendapat{{$i->id}}&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <strong>{{$i->summary}}</strong><br>
                             "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
