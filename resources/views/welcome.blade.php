@@ -17,6 +17,9 @@
             padding: 0 15px;
             padding-top: 8px;
         }
+        h2{
+            margin-bottom: 0px;
+        }
         @media (max-width: 768px){
             .modal-dialog {
                 width: 90%;
@@ -105,7 +108,7 @@
     </a>
 </div>
 
-<h2 class="text center" id="visi-misi-program">
+<h2 class="text center" id="visi-misi-program" style="margin-bottom: 11px;">
     Visi, Misi, &amp; Program
 </h2>
 <div class="row">
@@ -141,8 +144,8 @@
                 @if($program->count() != 0)
                     <div class="text-center"><em style="color:#e85454;"><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
-                        <p>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                        <p id="program{{$p->id}}">
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
                             {!!$p->value!!}
@@ -167,8 +170,8 @@
                 @if($program->count() != 0)
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
-                        <p>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                        <p id="program{{$p->id}}">
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
                             {!!$p->value!!}
@@ -220,15 +223,13 @@
     </div>
 </div>
 @endforeach
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
-</div>
 
 <h2 class="text center" id="pendapat">
     Pendapat
 </h2>
+@component('component.tombol-atas-survey')
+@endcomponent
 <div class="row">
-
     @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
@@ -240,8 +241,8 @@
                 @if($issues->count() != 0)
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($issues as $i)
-                        <p>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                        <p id="pendapat{{$i->id}}">
+                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#pendapat{{$i->id}}&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <strong>{{$i->summary}}</strong><br>
                             "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
@@ -256,26 +257,22 @@
         </div>
     </div>
     @endforeach
-
-</div>
-
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
 </div>
 
 <h2 class="text center" id="testimoni">
     Testimoni<br>
     <small>Pengakuan Mereka yang Pernah Berkerja Langsung dengan Kandidat</small>
 </h2>
+@component('component.tombol-atas-survey')
+@endcomponent
 <div class="row">
-
     @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["testimonies"] as $t)
-                <p>
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendapat {{$t->voucher}} tentang {{$person["name"]}}&description=%22{{$t->testimony}}%22&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                <p id="testimoni{{$t->id}}">
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#testimoni{{$t->id}}&title=Pendapat {{$t->voucher}} tentang {{$person["name"]}}&description=%22{{$t->testimony}}%22&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
                     @if($t->testimony)
                         <em>"{!!$t->testimony!!}"</em><br>
@@ -291,23 +288,21 @@
         </div>
     </div>
     @endforeach
-
-</div>
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
 </div>
 
 <h2 class="text center" id="testimoni">
     Pendidikan
 </h2>
+@component('component.tombol-atas-survey')
+@endcomponent
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["educations"] as $e)
-                <p>
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Pendidikan {{$person["name"]}}&description={{$e->institution}}, {{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                <p id="pendidikan{{$e->id}}">
+                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#pendidikan{{$e->id}}&title=Pendidikan {{$person["name"]}}&description={{$e->institution}}, {{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <img class="pull-right" data-toggle="modal" data-target="#eduModal{{$e->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                     <b>{{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif</b><br>
                     {{$e->institution}} {{isset($e->degree) ? '&mdash; ('.$e->degree.')' : ''}}
@@ -321,9 +316,6 @@
         </div>
     </div>
     @endforeach
-</div>
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
 </div>
 
 @foreach($persons as $person)
@@ -347,6 +339,8 @@
 <h2 class="text center" id="karir">
     Karir &amp; Organisasi
 </h2>
+@component('component.tombol-atas-survey')
+@endcomponent
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
@@ -368,9 +362,6 @@
         </div>
     </div>
     @endforeach
-</div>
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
 </div>
 
 @foreach($persons as $person)
@@ -394,6 +385,8 @@
 <h2 class="text center" id="penghargaan">
     Penghargaan
 </h2>
+@component('component.tombol-atas-survey')
+@endcomponent
 <div class="row">
     @foreach($persons as $person)
     <div class="col-sm-3">
@@ -414,9 +407,6 @@
         </div>
     </div>
     @endforeach
-</div>
-<div class="text center">
-    <a href="#atas">kembali ke atas</a>
 </div>
 
 @endsection
