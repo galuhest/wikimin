@@ -146,7 +146,15 @@
                     <div class="text-center"><em style="color:#e85454;"><strong>{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p id="program{{$p->id}}">
-                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A*Program Ahok-Djarot: '.$p->title.'*%0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                            @php
+                                $bandingkan_program = "Bandingkan%20program-program%20Ahok%20dan%20Anies%20di%20https://staging.wikikandidat.com%23program";
+
+                                $wa = "https://api.whatsapp.com/send?text=";
+                                $wa .= "*Program Ahok-Djarot: ".$p->title."*%0A";
+                                $wa .= strip_tags($p->value)."%0A%0A";
+                                $wa .= $bandingkan_program.$p->id;
+                            @endphp
+                            <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong>
@@ -174,6 +182,12 @@
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($program as $p)
                         <p id="program{{$p->id}}">
+                            @php
+                                $wa = "https://api.whatsapp.com/send?text=";
+                                $wa .= "*Program Anies-Sandi: ".$p->title."*%0A";
+                                $wa .= strip_tags($p->value)."%0A%0A";
+                                $wa .= $bandingkan_program.$p->id;
+                            @endphp
                             <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A*Program Anies-Sandi: '.$p->title.'*%0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
