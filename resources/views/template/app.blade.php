@@ -15,8 +15,8 @@
     <meta name="twitter:description" content="adalah 'Wikipedia' yang independen & spesialis pemilihan pejabat. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
     <meta property="og:description" content="adalah 'Wikipedia' yang independen & spesialis pemilihan pejabat. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia." />
 
-    <meta name="twitter:image" content="{{asset("ahok-atau-anies.png", $secure)}}">
-    <meta property="og:image" content="{{asset("ahok-atau-anies.png", $secure)}}"/>
+    <meta name="twitter:image" content="{{asset("images/ahok-atau-anies.png", $secure)}}">
+    <meta property="og:image" content="{{asset("images/ahok-atau-anies.png", $secure)}}"/>
 
     <!--<meta name="keywords" content="#" />
     <meta name="url" content="#" />
