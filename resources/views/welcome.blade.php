@@ -158,7 +158,7 @@
                                 $fb .= "app_id=1412350799013815";
                                 $fb .= "&display=popup";
                                 $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23program".$p->id;
-                                $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com%23program";
+                                $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
                                 $fb .= "&quote=Program Ahok-Djarot *".$p->title."*: ".strip_tags($p->value);
                             @endphp
                             <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
@@ -194,9 +194,16 @@
                                 $wa .= "*Program Anies-Sandi: ".$p->title."*%0A";
                                 $wa .= strip_tags($p->value)."%0A%0A";
                                 $wa .= $bandingkan_program.$p->id;
+
+                                $fb = "https://www.facebook.com/dialog/share?";
+                                $fb .= "app_id=1412350799013815";
+                                $fb .= "&display=popup";
+                                $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23program".$p->id;
+                                $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                                $fb .= "&quote=Program Anies-Sandi *".$p->title."*: ".strip_tags($p->value);
                             @endphp
                             <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>
                             {!!$p->value!!}
@@ -267,8 +274,21 @@
                     <div class="text-center"><strong><em style="color:#e85454;">{{$t->topic}}</strong></em></div>
                     @foreach($issues as $i)
                         <p id="pendapat{{$i->id}}">
-                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#pendapat'.$i->id.'%0A*Pendapat '.$person["name"].': '.$i->summary.'*%0A"...'.strip_tags($p->value).'..."')!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#pendapat{{$i->id}}&title={{$i->summary}}&description=%22{{$i->value}}%22, kata {{$person["name"]}} di {{$i->source}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            @php
+                                $wa = "https://api.whatsapp.com/send?text=";
+                                $wa .= "*Pendapat ".$person["name"]." tentang ".$i->summary.":*%0A%22";
+                                $wa .= $i->value."%22%0A%0A";
+                                $wa .= "Lihat pendapat semua kandidat di https%3A%2F%2Fstaging.wikikandidat.com";
+
+                                $fb = "https://www.facebook.com/dialog/share?";
+                                $fb .= "app_id=1412350799013815";
+                                $fb .= "&display=popup";
+                                $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23pendapat".$i->id;
+                                $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                                $fb .= "&quote=".$person["name"].": %22".$i->value."%22";
+                            @endphp
+                            <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                            <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <strong>{{$i->summary}}</strong><br>
                             "{!!$i->value!!}", <a href="{{$i->source_link}}">{{$i->source}}</a>
                         </p>
@@ -298,7 +318,21 @@
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["testimonies"] as $t)
                 <p id="testimoni{{$t->id}}">
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#testimoni{{$t->id}}&title=Pendapat {{$t->voucher}} tentang {{$person["name"]}}&description=%22{{$t->testimony}}%22&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                    @php
+                        $wa = "https://api.whatsapp.com/send?text=";
+                        $wa .= "*Testimoni ".$t->voucher." tentang ".$person["name"].":*%0A%22";
+                        $wa .= $t->testimony."%22%0A%0A";
+                        $wa .= "Baca testimoni-testimoni ke semua kandidat di https%3A%2F%2Fstaging.wikikandidat.com";
+
+                        $fb = "https://www.facebook.com/dialog/share?";
+                        $fb .= "app_id=1412350799013815";
+                        $fb .= "&display=popup";
+                        $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23pendapat".$t->id;
+                        $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                        $fb .= "&quote=Testimoni ".$t->voucher." tentang ".$person["name"].":*%0A%22".$t->testimony."%22";
+                    @endphp
+                    <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                    <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <strong>{{$t->voucher}} ({{$t->year_given}})</strong><br>
                     @if($t->testimony)
                         <em>"{!!$t->testimony!!}"</em><br>
@@ -328,9 +362,29 @@
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["educations"] as $e)
                 <p id="pendidikan{{$e->id}}">
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#pendidikan{{$e->id}}&title=Pendidikan {{$person["name"]}}&description={{$e->institution}}, {{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                    @php
+                        $wa = "https://api.whatsapp.com/send?text=";
+                        $wa .= "*Pendidikan ".$person["name"]."*: ".$e->institution.", ";
+                        $time = $e->year_start;
+                        if($e->year_start && $e->year_end)
+                            $time .= " - ";
+                        $time .= $e->year_end;
+                        if(!$e->year_start)
+                            $time .= " (lulus)";
+                        $wa .= $time."%0A%0A";
+                        $wa .= "Selengkapnya di https%3A%2F%2Fstaging.wikikandidat.com";
+
+                        $fb = "https://www.facebook.com/dialog/share?";
+                        $fb .= "app_id=1412350799013815";
+                        $fb .= "&display=popup";
+                        $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23pendidikan".$e->id;
+                        $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                        $fb .= "&quote=Pendidikan ".$person["name"].": ".$e->institution.", ".$time;
+                    @endphp
+                    <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                    <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <img class="pull-right" data-toggle="modal" data-target="#eduModal{{$e->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
-                    <b>{{$e->year_start}} @if($e->year_start && $e->year_end)-@endif {{$e->year_end}} @if(!$e->year_start) (lulus) @endif</b><br>
+                    <b>{{$time}}</b><br>
                     {{$e->institution}} {{isset($e->degree) ? '&mdash; ('.$e->degree.')' : ''}}
                 </p>
             @empty
@@ -373,14 +427,36 @@
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["careers"] as $c)
-                <p>
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Karir {{$person["name"]}}&description={{$c->institution}}, {{$c->year_start}} @if(!$c->year_end)(mulai)@endif @if($c->year_start && $c->year_end)-@endif {{$c->year_end}} @if(!$c->year_start)(selesai)@endif&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                <p id="karir{{$c->id}}">
+                    @php
+                        $wa = "https://api.whatsapp.com/send?text=";
+                        $wa .= "*Karir ".$person["name"]."*: ".$c->institution.", ";
+                        $time = $c->year_start." ";
+                        if(!$c->year_end)
+                            $time .= "(mulai)";
+                        if($c->year_start && $c->year_end)
+                            $time .= " - ";
+                        $time .= $c->year_end;
+                        if(!$c->year_start)
+                            $time .= " (selesai)";
+                        $wa .= $time."%0A%0A";
+                        $wa .= "Selengkapnya di https%3A%2F%2Fstaging.wikikandidat.com";
+
+                        $fb = "https://www.facebook.com/dialog/share?";
+                        $fb .= "app_id=1412350799013815";
+                        $fb .= "&display=popup";
+                        $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%karir".$c->id;
+                        $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                        $fb .= "&quote=Karir ".$person["name"].": ".$c->institution.", ".$time;
+                    @endphp
+                    <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                    <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <img class="pull-right" data-toggle="modal" data-target="#careerModal{{$c->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                     <b>{{$c->year_start}} @if($c->year_start && $c->year_end)-@endif {{$c->year_end}}</b><br>
                     {{$c->position}}@if($c->position), @endif{{$c->institution}}
                 </p>
             @empty
-                <p>No educations</p>
+                <p>No Career</p>
             @endforelse
             <div class="text-center">
                 <a href="{{url('career/'.$person['id'].'/kontribusi-data')}}" target="_blank" class="btn btn-primary btn-small">Lengkapi Data Karir {{$person["name"]}}</a>
@@ -419,8 +495,21 @@
         <div class="kotak-putih">
             <h4 class="text center">{{$person["name"]}}</h4>
             @forelse ($person["awards"] as $a)
-                <p>
-                    <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com&title=Penghargaan {{$person["name"]}}&description={{$a->award}} tahun {{$a->year_given}}&picture={{asset('images/'.$person["name"].'.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                <p id="penghargaan{{$a->id}}">
+                    @php
+                        $wa = "https://api.whatsapp.com/send?text=";
+                        $wa .= "*Penghargaan ".$person["name"]."*: ".$a->award." dari ".$a->institution." pada ".$a->year_given."%0A%0A";
+                        $wa .= "Selengkapnya di https%3A%2F%2Fstaging.wikikandidat.com";
+
+                        $fb = "https://www.facebook.com/dialog/share?";
+                        $fb .= "app_id=1412350799013815";
+                        $fb .= "&display=popup";
+                        $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%karir".$c->id;
+                        $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com";
+                        $fb .= "&quote=Penghargaan ".$person["name"].": ".$a->award." dari ".$a->institution." pada ".$a->year_given;
+                    @endphp
+                    <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                    <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                     <b>{{$a->year_given}}</b><br>
                     {{$a->award}}, dari {{$a->institution}}<br><a href="{{$a->source_link}}">{{$a->source}}</a>
                 </p>
