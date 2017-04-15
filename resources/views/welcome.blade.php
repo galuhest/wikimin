@@ -153,9 +153,16 @@
                                 $wa .= "*Program Ahok-Djarot: ".$p->title."*%0A";
                                 $wa .= strip_tags($p->value)."%0A%0A";
                                 $wa .= $bandingkan_program.$p->id;
+                                
+                                $fb = "https://www.facebook.com/dialog/share?";
+                                $fb .= "app_id=1412350799013815";
+                                $fb .= "&display=popup";
+                                $fb .= "&href=https%3A%2F%2Fstaging.wikikandidat.com%23program".$p->id;
+                                $fb .= "&redirect_uri=https%3A%2F%2Fstaging.wikikandidat.com%23program";
+                                $fb .= "&quote=Program Ahok-Djarot *".$p->title."*: ".strip_tags($p->value);
                             @endphp
                             <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
-                            <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Ahok.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
+                            <a class="pull-right" href="{{$fb}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong>
                             <br>
@@ -188,7 +195,7 @@
                                 $wa .= strip_tags($p->value)."%0A%0A";
                                 $wa .= $bandingkan_program.$p->id;
                             @endphp
-                            <a class="pull-right" href="whatsapp://send?text={!!urlencode('http://staging.wikikandidat.com#program'.$p->id.'%0A*Program Anies-Sandi: '.$p->title.'*%0A'.strip_tags($p->value))!!}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
+                            <a class="pull-right" href="{{$wa}}" target="_blank" style="margin-left: 3px;"><img width="15px" height="15px" src="{{asset('images/wa.png', $secure)}}" alt=""></a>
                             <a class="pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://staging.wikikandidat.com#program{{$p->id}}&title={{$p->title}}&description={{$p->value}}&picture={{asset('images/Anies.jpg', $secure)}}" target="_blank"><img width="15px" height="15px" src="{{asset('images/fb.jpg', $secure)}}" alt=""></a>
                             <img class="pull-right" data-toggle="modal" data-target="#programModal{{$p->id}}" src="{{asset('images/checklist.png', $secure)}}" width="15px" height="15px" alt="">
                             <strong>{{$p->title}}</strong><br>

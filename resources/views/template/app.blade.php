@@ -12,7 +12,11 @@
 
     <title>Wikikandidat</title>
 
-    <meta name="twitter:description" content="adalah 'Wikipedia' spesialis pemilu yang independen. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
+    <meta name="twitter:description" content="adalah 'Wikipedia' yang independen & spesialis pemilihan pejabat. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia.">
+    <meta property="og:description" content="adalah 'Wikipedia' yang independen & spesialis pemilihan pejabat. Buatan mahasiswa UI. Visi: Meritokrasi Indonesia." />
+
+    <meta name="twitter:image" content="{{asset("ahok-atau-anies.png", $secure)}}">
+    <meta property="og:image" content="{{asset("ahok-atau-anies.png", $secure)}}"/>
 
     <!--<meta name="keywords" content="#" />
     <meta name="url" content="#" />
@@ -24,16 +28,16 @@
     <meta name="twitter:url" content="#">
     <meta name="twitter:title" content="#">
     <meta name="twitter:description" content="#">
-    <meta name="twitter:image" content="##">
+    
 
     <meta property="og:url" content="#" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="#" />
-    <meta property="og:description" content="#" />
+    
     <meta name="author" content="#">
     <meta name="csrf-token" content="#" />
     <meta name="image:Logo" content="#"/>
-    <meta property="og:image" content="#"/>
+    
 
     <link rel="canonical" href="#" />
 
