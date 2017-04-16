@@ -32,33 +32,25 @@
     <div style="max-width: 400px; text-align: left; margin:0 auto; ">
         <strong>Panduan Umum:</strong><br>
         <ol>
-            <li>Bukti sahih adalah wajib</li>
-            <li>Bukti berbentuk publikasi media massa diterima&mdash;tapi hanya yang memiliki identitas dan kontak redaksi yang jelas</li>
+            <li>Bukti sahih adalah wajib.</li>
+            <li>Bukti berbentuk publikasi media massa online diterima&mdash;tapi hanya yang memiliki identitas dan kontak redaksi yang jelas.</li>
+            <li>Merevisi konten atau bukti data yang sudah ada di Wikikandidat dibolehkan.</li>
         </ol>
-        @if($type == "Pendidikan")
-            <strong>Panduan Khusus Data Pendidikan:</strong>
-            <ol>
-                <li></li>
-            </ol>
-        @elseif($type == "Testimoni")
+        @if($type == "Testimoni")
             <strong>Panduan Khusus Data Testimoni:</strong>
             <ol>
-                <li></li>
+                <li>Hanya dari konteks "pernah berkerja bersama secara langsung".</li>
+                <li>Khusus untuk tipe data ini, blog dibolehkan.</li>
             </ol>
         @elseif($type == "Pendapat")
             <strong>Panduan Khusus Data Pendapat:</strong>
             <ol>
-                <li></li>
-            </ol>
-        @elseif($type == "Karir")
-            <strong>Panduan Khusus Data Karir &amp; Organisasi:</strong>
-            <ol>
-                <li></li>
+                <li>Karena keterbatasan tempat, Wikikandidat tidak bisa menampilkan semua pendapat. Hanya yang punya nilai jurnalistik tertinggi yang akan ditampilkan.</li>
             </ol>
         @elseif($type == "Penghargaan")
             <strong>Panduan Khusus Data Penghargaan:</strong>
             <ol>
-                <li></li>
+                <li>Penghargaan harus dirilis oleh organisasi resmi.</li>
             </ol>
         @endif
         </ol>
